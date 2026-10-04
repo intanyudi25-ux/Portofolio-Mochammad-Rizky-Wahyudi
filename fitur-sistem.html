@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Fitur Sistem & Shopping Cart — CloudCart HUB | Risky Wahyudi</title>
+  
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB',
+            secondary: '#4F46E5',
+            accent: '#06B6D4',
+            dark: '#0F172A',
+            bgLight: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- TOP ACADEMIC NOTIFICATION BAR -->
+  <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 text-white text-xs py-2 px-4 border-b border-slate-700/60 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/20 text-cyan-300 border border-cyan-400/30">
+          <i class="fa-solid fa-graduation-cap mr-1"></i> FINAL PROJECT
+        </span>
+        <span class="text-slate-300">Mata Kuliah: <strong class="text-white">Cloud Computing (FS403Z)</strong> — TA 2026/2027</span>
+      </div>
+      <div class="flex items-center space-x-4 text-slate-300">
+        <span><i class="fa-solid fa-user-graduate text-cyan-400 mr-1"></i> <strong>Risky Wahyudi</strong></span>
+        <span><i class="fa-solid fa-university text-blue-400 mr-1"></i> Universitas Raharja</span>
+        <span class="hidden md:inline text-cyan-300"><i class="fa-solid fa-microchip mr-1"></i> Client-Side State Engine</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-cloud text-lg"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">CloudCart</span>
+              <span class="text-xs font-extrabold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 border border-blue-200">HUB</span>
+            </div>
+            <p class="text-[10px] text-slate-500 font-medium">Cloud E-Commerce Portfolio</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+            <i class="fa-solid fa-house text-slate-400"></i>
+            <span>Home</span>
+          </a>
+          <a href="dashboard.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+            <i class="fa-solid fa-chart-pie text-slate-400"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="fitur-sistem.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200/60 shadow-xs flex items-center space-x-1.5">
+            <i class="fa-solid fa-cart-shopping text-blue-600"></i>
+            <span>Features</span>
+          </a>
+          <a href="detail-layanan.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+            <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
+            <span>Product Catalog</span>
+          </a>
+          <a href="laporan-data.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+            <i class="fa-solid fa-file-invoice text-slate-400"></i>
+            <span>Reports</span>
+          </a>
+        </nav>
+
+        <!-- Right Cart Counter Badge -->
+        <div class="hidden md:flex items-center space-x-3">
+          <a href="#cartSection" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors">
+            <i class="fa-solid fa-basket-shopping mr-2 text-blue-600"></i>
+            <span>Keranjang</span>
+            <span id="navCartCount" class="ml-2 px-2 py-0.5 text-xs font-bold rounded-full bg-blue-600 text-white">0</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+            <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-1 shadow-xl">
+      <a href="index.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
+        <i class="fa-solid fa-house mr-2 text-slate-400"></i> Home
+      </a>
+      <a href="dashboard.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
+        <i class="fa-solid fa-chart-pie mr-2 text-slate-400"></i> Dashboard
+      </a>
+      <a href="fitur-sistem.html" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-blue-50 text-blue-700">
+        <i class="fa-solid fa-cart-shopping mr-2 text-blue-600"></i> Features
+      </a>
+      <a href="detail-layanan.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
+        <i class="fa-solid fa-boxes-stacked mr-2 text-slate-400"></i> Product Catalog
+      </a>
+      <a href="laporan-data.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
+        <i class="fa-solid fa-file-invoice mr-2 text-slate-400"></i> Reports
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-8">
+    
+    <!-- PAGE TITLE & SUBTITLE -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+      <div>
+        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-2">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Modul Interaktif E-Commerce</span>
+        </div>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Shopping Cart & Checkout Simulation</h1>
+        <p class="text-sm text-slate-600 mt-1 max-w-3xl">
+          Simulasi belanja dinamis berbasis JavaScript murni (DOM Manipulation). Uji penambahan item ke keranjang, kupon diskon (<code>CLOUD10</code> / <code>RAHARJA15</code>), opsi ongkos kirim, dan kalkulasi total instan.
+        </p>
+      </div>
+
+      <!-- Demo coupon callout -->
+      <div class="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 text-xs text-slate-700">
+        <span class="font-bold text-blue-800 block mb-1"><i class="fa-solid fa-tags text-blue-600 mr-1"></i> Demo Kupon Tersedia:</span>
+        <div class="flex items-center space-x-2 font-mono">
+          <button onclick="applyDemoCoupon('CLOUD10')" class="px-2 py-0.5 rounded bg-white border border-blue-300 font-bold text-blue-700 hover:bg-blue-100 transition-colors">CLOUD10 (10%)</button>
+          <button onclick="applyDemoCoupon('RAHARJA15')" class="px-2 py-0.5 rounded bg-white border border-indigo-300 font-bold text-indigo-700 hover:bg-indigo-100 transition-colors">RAHARJA15 (15%)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN LAYOUT: PRODUCTS (LEFT 7 COLS) & CART / CHECKOUT (RIGHT 5 COLS) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT COLUMN: PRODUCT SELECTION (7 COLS) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center">
+            <i class="fa-solid fa-store text-blue-600 mr-2"></i> Pilihan Produk Cloud
+          </h2>
+          <span class="text-xs text-slate-500 font-medium">Klik "Tambah ke Cart" untuk mencoba simulasi</span>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" id="productGridContainer">
+          
+          <!-- Product 1: CloudBook Pro Laptop -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=80" 
+                alt="CloudBook Pro Laptop" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-600 text-white shadow-xs">
+                Electronics
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.9
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-blue-600 transition-colors">
+                  CloudBook Pro Laptop 16"
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Laptop developer berkinerja tinggi dengan prosesor multi-core dan SSD cloud-synchronized.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 18.500.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(1, 'CloudBook Pro Laptop 16&quot;', 18500000, 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2: Aero Wireless Headphones -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" 
+                alt="Aero Wireless Headphones" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-600 text-white shadow-xs">
+                Electronics
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.8
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-indigo-600 transition-colors">
+                  Aero Wireless Headphones ANC
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Headphone peredam bising aktif dengan daya tahan baterai 40 jam dan driver audio presisi.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 1.450.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(2, 'Aero Wireless Headphones ANC', 1450000, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3: SmartWatch X -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" 
+                alt="SmartWatch X" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-600 text-white shadow-xs">
+                Accessories
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.7
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-cyan-600 transition-colors">
+                  SmartWatch X Cloud Edition
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Jam tangan pintar dengan sensor detak jantung, SpO2, dan sinkronisasi cloud real-time.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 2.200.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(3, 'SmartWatch X Cloud Edition', 2200000, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4: CloudDesk Mechanical Keyboard -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80" 
+                alt="CloudDesk Mechanical Keyboard" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-600 text-white shadow-xs">
+                Accessories
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.9
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-indigo-600 transition-colors">
+                  CloudDesk Mechanical RGB Keyboard
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Keyboard mekanikal hot-swappable dengan switch taktil dan lampu latar RGB dinamis.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 850.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(4, 'CloudDesk Mechanical RGB Keyboard', 850000, 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5: UltraView Monitor -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80" 
+                alt="UltraView Monitor" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-600 text-white shadow-xs">
+                Electronics
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.8
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-blue-600 transition-colors">
+                  UltraView 4K IPS Monitor 27"
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Layar monitor Ultra HD dengan akurasi warna 99% sRGB dan konektivitas USB-C 65W charging.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 4.250.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(5, 'UltraView 4K IPS Monitor 27&quot;', 4250000, 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6: CloudBuds Earbuds -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80" 
+                alt="CloudBuds Earbuds" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-600 text-white shadow-xs">
+                Accessories
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-slate-700 backdrop-blur-xs">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i> 4.6
+              </span>
+            </div>
+            
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-cyan-600 transition-colors">
+                  CloudBuds Pro TWS Earbuds
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  Earphone nirkabel ergonomis tahan percikan air IPX5 dengan case pengisian daya wireless.
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block font-medium">Harga Satuan</span>
+                  <span class="text-base font-extrabold text-blue-600">Rp 680.000</span>
+                </div>
+                <button 
+                  onclick="addToCart(6, 'CloudBuds Pro TWS Earbuds', 680000, 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80')" 
+                  class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm active:scale-95 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-plus mr-1.5"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: SHOPPING CART & CHECKOUT CALCULATOR (5 COLS) -->
+      <div class="lg:col-span-5 space-y-6" id="cartSection">
+        
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm sticky top-24">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <h2 class="text-lg font-bold text-slate-900">Keranjang Belanja</h2>
+            </div>
+            <span id="cartItemCountBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+              0 Items
+            </span>
+          </div>
+
+          <!-- CART ITEMS LIST CONTAINER -->
+          <div id="cartItemsList" class="divide-y divide-slate-100 max-h-[280px] overflow-y-auto py-2 my-2 space-y-2">
+            <!-- Dynamic items rendered via JS or empty placeholder -->
+            <div id="emptyCartState" class="text-center py-10 text-slate-400">
+              <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-slate-300"></i>
+              <p class="text-sm font-medium">Keranjang belanja masih kosong.</p>
+              <p class="text-xs text-slate-400 mt-1">Pilih produk di sebelah kiri untuk memulai simulasi belanja.</p>
+            </div>
+          </div>
+
+          <!-- DISCOUNT COUPON FORM -->
+          <div class="pt-4 border-t border-slate-200">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Kupon Diskon Cloud
+            </label>
+            <div class="flex space-x-2">
+              <div class="relative flex-grow">
+                <input 
+                  type="text" 
+                  id="couponInput" 
+                  placeholder="Contoh: CLOUD10" 
+                  class="w-full px-3.5 py-2.5 text-xs font-mono uppercase bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white"
+                >
+              </div>
+              <button 
+                onclick="applyCoupon()" 
+                class="px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-900 transition-colors shrink-0"
+              >
+                Terapkan
+              </button>
+            </div>
+            <div id="couponMessage" class="mt-2 text-[11px] hidden font-medium"></div>
+          </div>
+
+          <!-- SHIPPING OPTIONS -->
+          <div class="pt-4 border-t border-slate-200">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Opsi Pengiriman
+            </label>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                <div class="flex items-center space-x-2">
+                  <input type="radio" name="shippingMethod" value="15000" onchange="calculateTotals()" checked class="text-blue-600 focus:ring-blue-500">
+                  <div>
+                    <span class="font-bold text-slate-800 block">Regular Shipping</span>
+                    <span class="text-[10px] text-slate-500">Estimasi 2-3 hari kerja</span>
+                  </div>
+                </div>
+                <span class="font-semibold text-slate-700">Rp 15.000</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                <div class="flex items-center space-x-2">
+                  <input type="radio" name="shippingMethod" value="30000" onchange="calculateTotals()" class="text-blue-600 focus:ring-blue-500">
+                  <div>
+                    <span class="font-bold text-slate-800 block">Express Shipping</span>
+                    <span class="text-[10px] text-slate-500">Estimasi 1 hari (Next Day)</span>
+                  </div>
+                </div>
+                <span class="font-semibold text-slate-700">Rp 30.000</span>
+              </label>
+
+              <div id="freeShippingBanner" class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-800 hidden items-center justify-between">
+                <span><i class="fa-solid fa-gift mr-1"></i> Gratis Ongkir Aktif (Subtotal &gt; Rp 1.000.000)</span>
+                <span class="font-bold text-emerald-700">Rp 0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAYMENT METHOD SELECTOR -->
+          <div class="pt-4 border-t border-slate-200">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              Metode Pembayaran (Simulasi)
+            </label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 flex items-center space-x-2">
+                <input type="radio" name="paymentOption" value="Bank Transfer (BCA VA)" checked class="text-blue-600">
+                <span class="font-medium text-slate-800">Bank Transfer</span>
+              </label>
+              <label class="p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 flex items-center space-x-2">
+                <input type="radio" name="paymentOption" value="E-Wallet (GoPay/OVO)" class="text-blue-600">
+                <span class="font-medium text-slate-800">E-Wallet</span>
+              </label>
+              <label class="p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 flex items-center space-x-2">
+                <input type="radio" name="paymentOption" value="Credit Card" class="text-blue-600">
+                <span class="font-medium text-slate-800">Credit Card</span>
+              </label>
+              <label class="p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 flex items-center space-x-2">
+                <input type="radio" name="paymentOption" value="Cash On Delivery (COD)" class="text-blue-600">
+                <span class="font-medium text-slate-800">COD</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SUMMARY CALCULATION -->
+          <div class="pt-4 border-t border-slate-200 space-y-2 text-xs">
+            <div class="flex justify-between text-slate-600">
+              <span>Subtotal Produk</span>
+              <span id="subtotalDisplay" class="font-semibold text-slate-900">Rp 0</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Diskon Kupon (<span id="discountPercentLabel">0%</span>)</span>
+              <span id="discountDisplay" class="font-semibold text-emerald-600">- Rp 0</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Ongkos Kirim</span>
+              <span id="shippingDisplay" class="font-semibold text-slate-900">Rp 15.000</span>
+            </div>
+            <div class="pt-2 border-t border-slate-200 flex justify-between text-sm">
+              <span class="font-extrabold text-slate-900">Grand Total</span>
+              <span id="grandTotalDisplay" class="text-lg font-extrabold text-blue-600">Rp 15.000</span>
+            </div>
+          </div>
+
+          <!-- CHECKOUT SIMULATION BUTTON -->
+          <div class="mt-6">
+            <button 
+              id="checkoutButton" 
+              onclick="triggerCheckout()" 
+              class="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/20 active:scale-[0.99] transition-all flex items-center justify-center space-x-2"
+            >
+              <i class="fa-solid fa-lock text-xs"></i>
+              <span>Proses Checkout Simulation</span>
+            </button>
+            <p class="text-[10px] text-center text-slate-400 mt-2">
+              <i class="fa-solid fa-circle-info mr-1"></i> Ini adalah simulasi akademik frontend. Tidak ada pemotongan uang riil.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MODAL: ORDER SIMULATION SUCCESSFUL -->
+  <div id="checkoutSuccessModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative animate-in fade-in zoom-in duration-300">
+      
+      <div class="text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 inline-block mb-1">
+          Simulasi Transaksi Selesai
+        </span>
+        <h3 class="text-2xl font-extrabold text-slate-900">Order Simulation Successful!</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Pesanan simulasi telah berhasil divalidasi oleh client-side engine CloudCart HUB.
+        </p>
+      </div>
+
+      <!-- Receipt Invoice Card -->
+      <div class="mt-5 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2.5">
+        <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+          <span class="text-slate-500">Invoice ID</span>
+          <span id="modalInvoiceId" class="font-mono font-bold text-blue-600">ORD-2026-XXXX</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-500">Metode Pembayaran</span>
+          <span id="modalPaymentMethod" class="font-semibold text-slate-800">Bank Transfer</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-500">Total Pembayaran</span>
+          <span id="modalGrandTotal" class="font-extrabold text-blue-600 text-sm">Rp 0</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-500">Estimasi Pengiriman</span>
+          <span class="font-medium text-slate-700">2-3 Hari Kerja (Cloud Express Logistics)</span>
+        </div>
+      </div>
+
+      <!-- Academic Notice Box -->
+      <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-800 flex items-start space-x-2">
+        <i class="fa-solid fa-triangle-exclamation text-amber-600 mt-0.5"></i>
+        <div>
+          <strong>Pengingat Evaluasi Akademik:</strong> Transaksi ini berjalan 100% di browser tanpa koneksi gateway finansial asli, sesuai ketentuan tugas Cloud Computing (FS403Z).
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-2 gap-3">
+        <button 
+          onclick="closeModalAndReset()" 
+          class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+        >
+          Belanja Lagi
+        </button>
+        <a 
+          href="laporan-data.html" 
+          class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 text-center transition-colors flex items-center justify-center"
+        >
+          Lihat di Laporan <i class="fa-solid fa-arrow-right ml-1.5 text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg border border-slate-700 text-xs items-center space-x-3 transition-all duration-300">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toastMessage">Produk ditambahkan ke keranjang!</span>
+  </div>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Col 1: Brand -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+              <i class="fa-solid fa-cloud text-sm"></i>
+            </div>
+            <span class="text-base font-bold text-white">CloudCart HUB</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Cloud-Based E-Commerce Portfolio dibuat untuk memenuhi evaluasi akademik mata kuliah Cloud Computing (FS403Z).
+          </p>
+        </div>
+
+        <!-- Col 2: Mahasiswa & Kampus -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">Informasi Mahasiswa</h4>
+          <ul class="space-y-1.5 text-slate-400">
+            <li><strong>Nama:</strong> Risky Wahyudi</li>
+            <li><strong>Prodi:</strong> Computer Science</li>
+            <li><strong>Kampus:</strong> Universitas Raharja</li>
+            <li><strong>Mata Kuliah:</strong> Cloud Computing</li>
+            <li><strong>Kode MK:</strong> FS403Z (TA 26/27)</li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Navigasi Cepat -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">Navigasi Halaman</h4>
+          <ul class="space-y-1.5 text-slate-400">
+            <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home (Portal Utama)</a></li>
+            <li><a href="dashboard.html" class="hover:text-blue-400 transition-colors">Dashboard Analitik</a></li>
+            <li><a href="fitur-sistem.html" class="hover:text-blue-400 transition-colors">Fitur Sistem & Cart</a></li>
+            <li><a href="detail-layanan.html" class="hover:text-blue-400 transition-colors">Product Catalog & Detail</a></li>
+            <li><a href="laporan-data.html" class="hover:text-blue-400 transition-colors">Laporan & Data Transaksi</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Teknologi Cloud -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">Stack Cloud Computing</h4>
+          <ul class="space-y-1.5 text-slate-400">
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Netlify PaaS Static Engine</li>
+            <li><i class="fa-brands fa-github text-slate-300 mr-1.5"></i> GitHub Version Control</li>
+            <li><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Global Fastly / Cloudflare CDN</li>
+            <li><i class="fa-solid fa-chart-simple text-blue-400 mr-1.5"></i> Chart.js Visualization</li>
+            <li><i class="fa-solid fa-shield text-cyan-400 mr-1.5"></i> Simulated Academic Data</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+        <p>© 2026 CloudCart HUB — Cloud Computing Final Project. Created by <strong>Risky Wahyudi</strong> (Universitas Raharja).</p>
+        <p class="text-slate-400 font-medium">All Assets Loaded via External CDN • Zero Broken Links</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EMBEDDED JAVASCRIPT: Shopping Cart Engine & Calculations -->
+  <script>
+    // In-memory cart state
+    let cart = [];
+    let discountRate = 0; // 0.10 for CLOUD10, 0.15 for RAHARJA15
+    let appliedCouponCode = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Menu
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          if (mobileMenu.classList.contains('hidden')) {
+            mobileMenuIcon.classList.remove('fa-xmark');
+            mobileMenuIcon.classList.add('fa-bars');
+          } else {
+            mobileMenuIcon.classList.remove('fa-bars');
+            mobileMenuIcon.classList.add('fa-xmark');
+          }
+        });
+      }
+
+      // Pre-populate with 1 sample item so user immediately sees active cart
+      addToCart(2, 'Aero Wireless Headphones ANC', 1450000, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80', false);
+    });
+
+    function addToCart(id, name, price, image, showToastAlert = true) {
+      const existingItem = cart.find(item => item.id === id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: id,
+          name: name,
+          price: price,
+          image: image,
+          quantity: 1
+        });
+      }
+
+      renderCart();
+      calculateTotals();
+
+      if (showToastAlert) {
+        showToast(`"${name}" berhasil ditambahkan ke keranjang!`);
+      }
+    }
+
+    function updateQuantity(id, delta) {
+      const item = cart.find(item => item.id === id);
+      if (!item) return;
+
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        removeItem(id);
+        return;
+      }
+
+      renderCart();
+      calculateTotals();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCart();
+      calculateTotals();
+      showToast('Item dihapus dari keranjang.');
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsList');
+      const navCartCount = document.getElementById('navCartCount');
+      const cartItemCountBadge = document.getElementById('cartItemCountBadge');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (navCartCount) navCartCount.textContent = totalItems;
+      if (cartItemCountBadge) cartItemCountBadge.textContent = `${totalItems} Items`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div id="emptyCartState" class="text-center py-10 text-slate-400">
+            <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-slate-300"></i>
+            <p class="text-sm font-medium">Keranjang belanja masih kosong.</p>
+            <p class="text-xs text-slate-400 mt-1">Pilih produk di sebelah kiri untuk memulai simulasi belanja.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        html += `
+          <div class="py-3 flex items-center justify-between space-x-3">
+            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover bg-slate-100 shrink-0">
+            <div class="flex-grow min-w-0">
+              <h4 class="text-xs font-bold text-slate-800 truncate">${item.name}</h4>
+              <p class="text-[11px] text-blue-600 font-semibold">Rp ${item.price.toLocaleString('id-ID')}</p>
+            </div>
+            <div class="flex items-center space-x-1.5 shrink-0">
+              <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">-</button>
+              <span class="w-6 text-center text-xs font-bold text-slate-800">${item.quantity}</span>
+              <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">+</button>
+              <button onclick="removeItem(${item.id})" class="ml-1 text-slate-400 hover:text-rose-600 transition-colors p-1" title="Hapus Item">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function calculateTotals() {
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const discount = Math.round(subtotal * discountRate);
+
+      // Shipping calculation
+      let selectedShipping = 15000;
+      const shippingRadio = document.querySelector('input[name="shippingMethod"]:checked');
+      if (shippingRadio) {
+        selectedShipping = parseInt(shippingRadio.value, 10);
+      }
+
+      const freeShippingBanner = document.getElementById('freeShippingBanner');
+      // Free shipping condition: if subtotal > 1.000.000, free shipping qualifies
+      let effectiveShipping = selectedShipping;
+      if (subtotal > 1000000 && cart.length > 0) {
+        effectiveShipping = 0;
+        if (freeShippingBanner) freeShippingBanner.classList.remove('hidden');
+      } else {
+        if (freeShippingBanner) freeShippingBanner.classList.add('hidden');
+      }
+
+      if (cart.length === 0) {
+        effectiveShipping = 0;
+      }
+
+      const grandTotal = Math.max(0, subtotal - discount + effectiveShipping);
+
+      // Update UI elements
+      document.getElementById('subtotalDisplay').textContent = 'Rp ' + subtotal.toLocaleString('id-ID');
+      document.getElementById('discountDisplay').textContent = '- Rp ' + discount.toLocaleString('id-ID');
+      document.getElementById('discountPercentLabel').textContent = `${Math.round(discountRate * 100)}%`;
+      document.getElementById('shippingDisplay').textContent = effectiveShipping === 0 ? 'Rp 0 (GRATIS)' : 'Rp ' + effectiveShipping.toLocaleString('id-ID');
+      document.getElementById('grandTotalDisplay').textContent = 'Rp ' + grandTotal.toLocaleString('id-ID');
+
+      return { subtotal, discount, shipping: effectiveShipping, grandTotal };
+    }
+
+    function applyDemoCoupon(code) {
+      document.getElementById('couponInput').value = code;
+      applyCoupon();
+    }
+
+    function applyCoupon() {
+      const input = document.getElementById('couponInput');
+      const msg = document.getElementById('couponMessage');
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        msg.textContent = 'Silakan masukkan kode kupon diskon.';
+        msg.className = 'mt-2 text-[11px] font-medium text-rose-600 block';
+        return;
+      }
+
+      if (code === 'CLOUD10') {
+        discountRate = 0.10;
+        appliedCouponCode = 'CLOUD10';
+        msg.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Kupon CLOUD10 aktif! Anda mendapatkan diskon 10%.';
+        msg.className = 'mt-2 text-[11px] font-medium text-emerald-600 block';
+        calculateTotals();
+        showToast('Kupon CLOUD10 berhasil diterapkan!');
+      } else if (code === 'RAHARJA15') {
+        discountRate = 0.15;
+        appliedCouponCode = 'RAHARJA15';
+        msg.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Kupon RAHARJA15 aktif! Anda mendapatkan diskon 15%.';
+        msg.className = 'mt-2 text-[11px] font-medium text-emerald-600 block';
+        calculateTotals();
+        showToast('Kupon RAHARJA15 berhasil diterapkan!');
+      } else {
+        discountRate = 0;
+        appliedCouponCode = '';
+        msg.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> Kode kupon tidak valid. Gunakan CLOUD10 atau RAHARJA15.';
+        msg.className = 'mt-2 text-[11px] font-medium text-rose-600 block';
+        calculateTotals();
+      }
+    }
+
+    function triggerCheckout() {
+      if (cart.length === 0) {
+        alert('Keranjang belanja kosong! Silakan tambahkan produk terlebih dahulu.');
+        return;
+      }
+
+      const totals = calculateTotals();
+      const randomOrderNum = Math.floor(1000 + Math.random() * 9000);
+      const invoiceId = `ORD-2026-${randomOrderNum}`;
+
+      const paymentRadio = document.querySelector('input[name="paymentOption"]:checked');
+      const paymentMethod = paymentRadio ? paymentRadio.value : 'Bank Transfer';
+
+      document.getElementById('modalInvoiceId').textContent = invoiceId;
+      document.getElementById('modalPaymentMethod').textContent = paymentMethod;
+      document.getElementById('modalGrandTotal').textContent = 'Rp ' + totals.grandTotal.toLocaleString('id-ID');
+
+      const modal = document.getElementById('checkoutSuccessModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeModalAndReset() {
+      document.getElementById('checkoutSuccessModal').classList.add('hidden');
+      // Reset cart for clean re-test
+      cart = [];
+      discountRate = 0;
+      appliedCouponCode = '';
+      document.getElementById('couponInput').value = '';
+      document.getElementById('couponMessage').className = 'mt-2 text-[11px] hidden';
+      renderCart();
+      calculateTotals();
+      showToast('Keranjang disetel ulang untuk simulasi berikutnya.');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
