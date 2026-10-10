@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Dashboard Analitik — CloudCart HUB | Risky Wahyudi</title>
+  <title>Creator Analytics Dashboard — Aetheria Streamer HUB | Moch Rizky Wahyudi</title>
   
   <!-- Google Fonts CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -21,14 +21,17 @@
       theme: {
         extend: {
           colors: {
-            primary: '#2563EB',
-            secondary: '#4F46E5',
-            accent: '#06B6D4',
-            dark: '#0F172A',
+            primary: '#6366F1',
+            secondary: '#A855F7',
+            accent: '#EC4899',
+            neonCyan: '#06B6D4',
+            darkVoid: '#0B0F19',
+            darkSlate: '#111827',
             bgLight: '#F8FAFC'
           },
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
           }
         }
       }
@@ -37,64 +40,139 @@
 
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Scroll Pop-up Animation */
+    .scroll-popup {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-popup.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-popup {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    /* Academic Cloud Term Tooltip Styles */
+    .cloud-term {
+      position: relative;
+      display: inline-flex;
+      align-items: baseline;
+      cursor: help;
+      border-bottom: 1.5px dotted #c084fc;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    .cloud-term:hover {
+      color: #a855f7;
+      border-bottom-style: solid;
+    }
+    .cloud-term .tooltip-box {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 270px;
+      background: #0f172a;
+      color: #f8fafc;
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.45;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      z-index: 70;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cloud-term .tooltip-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #0f172a transparent transparent transparent;
+    }
+    .cloud-term:hover .tooltip-box,
+    .cloud-term:focus-visible .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
 
   <!-- TOP ACADEMIC NOTIFICATION BAR -->
-  <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 text-white text-xs py-2 px-4 border-b border-slate-700/60 shadow-sm">
+  <div class="bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white text-xs py-2 px-4 border-b border-purple-800/40 shadow-sm">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <div class="flex items-center space-x-2">
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/20 text-cyan-300 border border-cyan-400/30">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/20 text-fuchsia-300 border border-fuchsia-400/30">
           <i class="fa-solid fa-graduation-cap mr-1"></i> FINAL PROJECT
         </span>
         <span class="text-slate-300">Mata Kuliah: <strong class="text-white">Cloud Computing (FS403Z)</strong> — TA 2026/2027</span>
       </div>
-      <div class="flex items-center space-x-4 text-slate-300">
-        <span><i class="fa-solid fa-user-graduate text-cyan-400 mr-1"></i> <strong>Risky Wahyudi</strong></span>
-        <span><i class="fa-solid fa-university text-blue-400 mr-1"></i> Universitas Raharja</span>
-        <span class="hidden md:inline text-amber-300"><i class="fa-solid fa-chart-line mr-1"></i> Mode: Simulasi Data</span>
+      <div class="flex items-center space-x-3 text-slate-300">
+        <span><i class="fa-solid fa-user-graduate text-fuchsia-400 mr-1"></i> <strong>Moch Rizky Wahyudi</strong></span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/20 text-cyan-300 border border-cyan-400/30 font-mono"><i class="fa-solid fa-id-card mr-1 text-cyan-300"></i>NIM: 2422416853</span>
+        <span><i class="fa-solid fa-university text-indigo-400 mr-1"></i> Universitas Raharja</span>
+        <span class="hidden md:inline text-fuchsia-300"><i class="fa-solid fa-chart-line mr-1"></i> Mode: Creator Metrics Simulasi</span>
       </div>
     </div>
   </div>
 
   <!-- MAIN NAVIGATION -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+  <header class="scroll-popup sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         
         <!-- Brand Logo -->
         <a href="index.html" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-            <i class="fa-solid fa-cloud text-lg"></i>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-500/25 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-headset text-lg"></i>
           </div>
           <div>
             <div class="flex items-center space-x-1.5">
-              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">CloudCart</span>
-              <span class="text-xs font-extrabold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 border border-blue-200">HUB</span>
+              <span class="text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Aetheria</span>
+              <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 border border-purple-200">2026 HUB</span>
             </div>
-            <p class="text-[10px] text-slate-500 font-medium">Cloud E-Commerce Portfolio</p>
+            <p class="text-[10px] text-slate-500 font-medium">VTuber & Anime Creator Gear</p>
           </div>
         </a>
 
         <!-- Desktop Navigation Links -->
         <nav class="hidden md:flex items-center space-x-1">
-          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-house text-slate-400"></i>
             <span>Home</span>
           </a>
-          <a href="dashboard.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200/60 shadow-xs flex items-center space-x-1.5">
-            <i class="fa-solid fa-chart-pie text-blue-600"></i>
+          <a href="dashboard.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-purple-50 text-purple-700 border border-purple-200/60 shadow-xs flex items-center space-x-1.5">
+            <i class="fa-solid fa-chart-pie text-purple-600"></i>
             <span>Dashboard</span>
           </a>
-          <a href="fitur-sistem.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="fitur-sistem.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-cart-shopping text-slate-400"></i>
-            <span>Features</span>
+            <span>Cart & Features</span>
           </a>
-          <a href="detail-layanan.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="detail-layanan.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
-            <span>Product Catalog</span>
+            <span>Gear Catalog</span>
           </a>
-          <a href="laporan-data.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="laporan-data.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-file-invoice text-slate-400"></i>
             <span>Reports</span>
           </a>
@@ -102,14 +180,14 @@
 
         <!-- Right Quick Action -->
         <div class="hidden md:flex items-center space-x-3">
-          <a href="fitur-sistem.html" class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all">
-            <i class="fa-solid fa-cart-plus mr-1.5"></i> Transaksi Baru
+          <a href="fitur-sistem.html" class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 shadow-md shadow-purple-500/20 transition-all">
+            <i class="fa-solid fa-cart-plus mr-1.5"></i> Order Drop Baru
           </a>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="md:hidden flex items-center">
-          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-purple-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
             <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
@@ -121,21 +199,21 @@
       <a href="index.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
         <i class="fa-solid fa-house mr-2 text-slate-400"></i> Home
       </a>
-      <a href="dashboard.html" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-blue-50 text-blue-700">
-        <i class="fa-solid fa-chart-pie mr-2 text-blue-600"></i> Dashboard
+      <a href="dashboard.html" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-purple-50 text-purple-700">
+        <i class="fa-solid fa-chart-pie mr-2 text-purple-600"></i> Dashboard
       </a>
       <a href="fitur-sistem.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
-        <i class="fa-solid fa-cart-shopping mr-2 text-slate-400"></i> Features
+        <i class="fa-solid fa-cart-shopping mr-2 text-slate-400"></i> Cart & Features
       </a>
       <a href="detail-layanan.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
-        <i class="fa-solid fa-boxes-stacked mr-2 text-slate-400"></i> Product Catalog
+        <i class="fa-solid fa-boxes-stacked mr-2 text-slate-400"></i> Gear Catalog
       </a>
       <a href="laporan-data.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
         <i class="fa-solid fa-file-invoice mr-2 text-slate-400"></i> Reports
       </a>
       <div class="pt-2">
-        <a href="fitur-sistem.html" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700">
-          <i class="fa-solid fa-cart-plus mr-1.5"></i> Transaksi Baru
+        <a href="fitur-sistem.html" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700">
+          <i class="fa-solid fa-cart-plus mr-1.5"></i> Order Drop Baru
         </a>
       </div>
     </div>
@@ -145,108 +223,108 @@
   <main class="flex-grow py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-8">
     
     <!-- PAGE HEADER -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
+    <div class="scroll-popup flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
       <div>
         <div class="flex items-center space-x-2">
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">E-Commerce Cloud Analytics</h1>
-          <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
-            SIMULATED DATA
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Creator Revenue & Gear Analytics 2026</h1>
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-fuchsia-100 text-purple-800 border border-purple-300">
+            VTUBER METRICS SIMULATED
           </span>
         </div>
         <p class="text-sm text-slate-600 mt-1">
-          Ringkasan performa penjualan, metrik operasional toko, dan status integrasi cloud pipeline (Netlify & GitHub).
+          Ringkasan performa penjualan merchandise virtual creator, metrik order streaming gear, dan status integrasi cloud pipeline (Netlify PaaS & GitHub VCS).
         </p>
       </div>
 
       <!-- Quick Action Filters -->
       <div class="flex items-center space-x-2">
         <span class="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 shadow-xs">
-          <i class="fa-regular fa-calendar mr-2 text-blue-600"></i> Periode: Jan - Jul 2026
+          <i class="fa-regular fa-calendar mr-2 text-purple-600"></i> Periode: Jan - Jul 2026
         </span>
-        <button onclick="refreshSimulatedData()" class="p-2 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-blue-600 hover:border-blue-400 transition-colors shadow-xs" title="Segarkan Data Simulasi">
+        <button onclick="refreshSimulatedData()" class="p-2 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-purple-600 hover:border-purple-400 transition-colors shadow-xs" title="Segarkan Data Simulasi">
           <i class="fa-solid fa-rotate text-sm"></i>
         </button>
       </div>
     </div>
 
     <!-- 4 KPI CARDS -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="scroll-popup grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       
       <!-- KPI 1: Total Revenue -->
-      <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="bg-white rounded-2xl p-6 border border-purple-100 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Revenue</span>
-          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Merchandise Revenue</span>
+          <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
             <i class="fa-solid fa-rupiah-sign"></i>
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Rp 48.750.000</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Rp 64.850.000</h2>
           <div class="mt-2 flex items-center text-xs">
             <span class="inline-flex items-center font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded mr-2">
-              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +14.8%
+              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +18.4%
             </span>
-            <span class="text-slate-500">vs bulan lalu</span>
+            <span class="text-slate-500">vs drop bulan lalu</span>
           </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500"></div>
       </div>
 
       <!-- KPI 2: Total Orders -->
-      <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="bg-white rounded-2xl p-6 border border-purple-100 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Orders</span>
-          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Gear Orders</span>
+          <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg">
             <i class="fa-solid fa-bag-shopping"></i>
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">1,248</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">1,842</h2>
           <div class="mt-2 flex items-center text-xs">
             <span class="inline-flex items-center font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded mr-2">
-              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +8.2%
+              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +12.1%
             </span>
             <span class="text-slate-500">transaksi selesai</span>
           </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 to-purple-600"></div>
       </div>
 
       <!-- KPI 3: Total Products -->
-      <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="bg-white rounded-2xl p-6 border border-purple-100 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Active Products</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Active Creator Gear</span>
           <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-boxes-stacked"></i>
+            <i class="fa-solid fa-headset"></i>
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">86</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">8 S-Tier Items</h2>
           <div class="mt-2 flex items-center text-xs">
-            <span class="inline-flex items-center font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded mr-2">
-              <i class="fa-solid fa-check mr-1"></i> 100% In-Stock
+            <span class="inline-flex items-center font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded mr-2">
+              <i class="fa-solid fa-bolt mr-1"></i> 100% In-Stock
             </span>
             <span class="text-slate-500">4 Kategori Aktif</span>
           </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-indigo-600"></div>
       </div>
 
       <!-- KPI 4: Conversion Rate -->
-      <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="bg-white rounded-2xl p-6 border border-purple-100 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Conversion Rate</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">VTuber Conversion Rate</span>
           <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
             <i class="fa-solid fa-chart-line"></i>
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">4.8%</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">6.2%</h2>
           <div class="mt-2 flex items-center text-xs">
             <span class="inline-flex items-center font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded mr-2">
-              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +1.2%
+              <i class="fa-solid fa-arrow-trend-up mr-1"></i> +2.4%
             </span>
-            <span class="text-slate-500">Rata-rata industri: 3.2%</span>
+            <span class="text-slate-500">Benchmark komunitas: 3.5%</span>
           </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
@@ -255,22 +333,22 @@
     </div>
 
     <!-- CHARTS SECTION: SALES REVENUE LINE CHART & CATEGORY DOUGHNUT CHART -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div class="scroll-popup grid grid-cols-1 lg:grid-cols-12 gap-6">
       
       <!-- Main Line Chart: Monthly Sales (Cols 8) -->
       <div class="lg:col-span-8 bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
         <div>
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-lg font-bold text-slate-900">Tren Penjualan Bulanan (Sales Revenue)</h3>
-              <p class="text-xs text-slate-500">Simulasi pendapatan dari Januari hingga Juli 2026 dalam jutaan Rupiah</p>
+              <h3 class="text-lg font-bold text-slate-900">Tren Penjualan Bulanan (Creator Gear Revenue)</h3>
+              <p class="text-xs text-slate-500">Simulasi omzet penjualan streaming gear dari Januari hingga Juli 2026</p>
             </div>
             <div class="flex items-center space-x-2">
               <span class="inline-flex items-center text-xs font-medium text-slate-500">
-                <span class="w-3 h-3 rounded-full bg-blue-600 inline-block mr-1.5"></span> Revenue (Rp)
+                <span class="w-3 h-3 rounded-full bg-purple-600 inline-block mr-1.5"></span> Revenue (Rp)
               </span>
               <span class="inline-flex items-center text-xs font-medium text-slate-500 ml-2">
-                <span class="w-3 h-3 rounded-full bg-cyan-400 inline-block mr-1.5"></span> Orders Vol
+                <span class="w-3 h-3 rounded-full bg-pink-500 inline-block mr-1.5"></span> Orders Qty
               </span>
             </div>
           </div>
@@ -281,7 +359,7 @@
         </div>
 
         <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
-          <span><i class="fa-solid fa-bolt text-amber-500 mr-1"></i> Puncak penjualan terjadi di bulan Juli (Rp 9.200.000).</span>
+          <span><i class="fa-solid fa-bolt text-amber-500 mr-1"></i> Puncak penjualan terjadi di bulan Juli (Rp 12.800.000 saat Summer Creator Drop).</span>
           <span class="font-mono text-slate-400">Chart.js Engine via jsDelivr CDN</span>
         </div>
       </div>
@@ -289,8 +367,8 @@
       <!-- Doughnut Chart: Category Distribution (Cols 4) -->
       <div class="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
         <div>
-          <h3 class="text-lg font-bold text-slate-900">Distribusi Kategori Produk</h3>
-          <p class="text-xs text-slate-500 mb-4">Porsi penjualan berdasarkan 4 kelompok katalog</p>
+          <h3 class="text-lg font-bold text-slate-900">Distribusi Kategori Creator Gear</h3>
+          <p class="text-xs text-slate-500 mb-4">Porsi penjualan berdasarkan 4 kelompok merchandise VTuber</p>
           
           <div class="relative w-full h-[260px] flex items-center justify-center">
             <canvas id="categoryDoughnutChart"></canvas>
@@ -299,20 +377,20 @@
 
         <div class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs">
           <div class="flex items-center space-x-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-            <span class="text-slate-700 font-medium">Electronics (45%)</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <span class="text-slate-700 font-medium">Streaming Audio (35%)</span>
           </div>
           <div class="flex items-center space-x-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
-            <span class="text-slate-700 font-medium">Fashion (25%)</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+            <span class="text-slate-700 font-medium">Motion & Visuals (30%)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+            <span class="text-slate-700 font-medium">Rig & Studio (20%)</span>
           </div>
           <div class="flex items-center space-x-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
-            <span class="text-slate-700 font-medium">Home & Living (18%)</span>
-          </div>
-          <div class="flex items-center space-x-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-            <span class="text-slate-700 font-medium">Accessories (12%)</span>
+            <span class="text-slate-700 font-medium">Peripherals (15%)</span>
           </div>
         </div>
       </div>
@@ -320,13 +398,13 @@
     </div>
 
     <!-- RECENT ORDERS TABLE SECTION -->
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="scroll-popup bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
       <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h3 class="text-lg font-bold text-slate-900">Pesanan Terbaru (Recent Orders)</h3>
-          <p class="text-xs text-slate-500">Catatan transaksi terkini yang diproses sistem simulasi e-commerce</p>
+          <h3 class="text-lg font-bold text-slate-900">Pesanan Gear Terbaru (Recent Creator Orders)</h3>
+          <p class="text-xs text-slate-500">Catatan transaksi pesanan perlengkapan streaming yang diproses sistem simulasi</p>
         </div>
-        <a href="laporan-data.html" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-800">
+        <a href="laporan-data.html" class="inline-flex items-center text-xs font-semibold text-purple-600 hover:text-purple-800">
           Lihat Semua Transaksi Lengkap <i class="fa-solid fa-arrow-right ml-1.5"></i>
         </a>
       </div>
@@ -337,8 +415,8 @@
           <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
             <tr>
               <th scope="col" class="py-3.5 px-4 sm:px-6">Order ID</th>
-              <th scope="col" class="py-3.5 px-4">Customer</th>
-              <th scope="col" class="py-3.5 px-4">Produk Utama</th>
+              <th scope="col" class="py-3.5 px-4">Creator Customer</th>
+              <th scope="col" class="py-3.5 px-4">Produk Streaming</th>
               <th scope="col" class="py-3.5 px-4">Total Amount</th>
               <th scope="col" class="py-3.5 px-4">Status Pesanan</th>
               <th scope="col" class="py-3.5 px-4 sm:px-6 text-right">Aksi</th>
@@ -346,78 +424,63 @@
           </thead>
           <tbody class="divide-y divide-slate-100 font-medium">
             
-            <tr class="hover:bg-slate-50/80 transition-colors">
-              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-blue-600">ORD-2026-0891</td>
-              <td class="py-3.5 px-4 text-slate-900">Budi Santoso</td>
-              <td class="py-3.5 px-4">CloudBook Pro Laptop 16"</td>
-              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 18.500.000</td>
+            <tr class="hover:bg-purple-50/40 transition-colors">
+              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-purple-600">ORD-2026-0891</td>
+              <td class="py-3.5 px-4 text-slate-900">Kuroha Vtuber Agency</td>
+              <td class="py-3.5 px-4">Aetheria Iris 4K StreamCam</td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 2.850.000</td>
               <td class="py-3.5 px-4">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
                   <i class="fa-solid fa-circle-check mr-1 text-[9px]"></i> Completed
                 </span>
               </td>
               <td class="py-3.5 px-4 sm:px-6 text-right">
-                <a href="laporan-data.html" class="text-blue-600 hover:underline">Detail</a>
+                <a href="laporan-data.html" class="text-purple-600 hover:underline">Detail</a>
               </td>
             </tr>
 
-            <tr class="hover:bg-slate-50/80 transition-colors">
-              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-blue-600">ORD-2026-0890</td>
-              <td class="py-3.5 px-4 text-slate-900">Siti Nurhaliza</td>
-              <td class="py-3.5 px-4">Aero Wireless Headphones ANC</td>
-              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 1.450.000</td>
+            <tr class="hover:bg-purple-50/40 transition-colors">
+              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-purple-600">ORD-2026-0890</td>
+              <td class="py-3.5 px-4 text-slate-900">Sakura V-Streamer</td>
+              <td class="py-3.5 px-4">PrismWave RGB Studio Mic</td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 1.750.000</td>
               <td class="py-3.5 px-4">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">
                   <i class="fa-solid fa-truck-fast mr-1 text-[9px]"></i> Shipped
                 </span>
               </td>
               <td class="py-3.5 px-4 sm:px-6 text-right">
-                <a href="laporan-data.html" class="text-blue-600 hover:underline">Detail</a>
+                <a href="laporan-data.html" class="text-purple-600 hover:underline">Detail</a>
               </td>
             </tr>
 
-            <tr class="hover:bg-slate-50/80 transition-colors">
-              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-blue-600">ORD-2026-0889</td>
-              <td class="py-3.5 px-4 text-slate-900">Ahmad Fadillah</td>
-              <td class="py-3.5 px-4">SmartWatch X Cloud Edition</td>
-              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 2.200.000</td>
-              <td class="py-3.5 px-4">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
-                  <i class="fa-solid fa-spinner fa-spin mr-1 text-[9px]"></i> Processing
-                </span>
-              </td>
-              <td class="py-3.5 px-4 sm:px-6 text-right">
-                <a href="laporan-data.html" class="text-blue-600 hover:underline">Detail</a>
-              </td>
-            </tr>
-
-            <tr class="hover:bg-slate-50/80 transition-colors">
-              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-blue-600">ORD-2026-0888</td>
-              <td class="py-3.5 px-4 text-slate-900">Dwi Kurniawati</td>
-              <td class="py-3.5 px-4">CloudDesk Mechanical RGB Keyboard</td>
-              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 850.000</td>
+            <tr class="hover:bg-purple-50/40 transition-colors">
+              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-purple-600">ORD-2026-0889</td>
+              <td class="py-3.5 px-4 text-slate-900">Rei Aoi Studio</td>
+              <td class="py-3.5 px-4">NekoPulse Pro ANC Headset</td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 1.450.000</td>
               <td class="py-3.5 px-4">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
                   <i class="fa-solid fa-circle-check mr-1 text-[9px]"></i> Completed
                 </span>
               </td>
               <td class="py-3.5 px-4 sm:px-6 text-right">
-                <a href="laporan-data.html" class="text-blue-600 hover:underline">Detail</a>
+                <a href="laporan-data.html" class="text-purple-600 hover:underline">Detail</a>
               </td>
             </tr>
 
-            <tr class="hover:bg-slate-50/80 transition-colors">
-              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-blue-600">ORD-2026-0887</td>
-              <td class="py-3.5 px-4 text-slate-900">Reza Pratama</td>
-              <td class="py-3.5 px-4">UltraView 4K IPS Monitor 27"</td>
-              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 4.250.000</td>
+            <tr class="hover:bg-purple-50/40 transition-colors">
+              <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-purple-600">ORD-2026-0888</td>
+              <td class="py-3.5 px-4 text-slate-900">Nova Anime Production</td>
+              <td class="py-3.5 px-4">Aetheria Deck 15-Key Controller</td>
+              <td class="py-3.5 px-4 font-bold text-slate-900">Rp 2.100.000</td>
               <td class="py-3.5 px-4">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">
-                  <i class="fa-solid fa-ban mr-1 text-[9px]"></i> Cancelled
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                  <i class="fa-solid fa-clock mr-1 text-[9px]"></i> Processing
                 </span>
               </td>
               <td class="py-3.5 px-4 sm:px-6 text-right">
-                <a href="laporan-data.html" class="text-blue-600 hover:underline">Detail</a>
+                <a href="laporan-data.html" class="text-purple-600 hover:underline">Detail</a>
               </td>
             </tr>
 
@@ -427,15 +490,15 @@
     </div>
 
     <!-- CLOUD INFRASTRUCTURE HEALTH STATUS SECTION -->
-    <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-700">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-700/80">
+    <div class="scroll-popup bg-gradient-to-br from-slate-950 via-slate-900 to-purple-950 text-white rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-800/40">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-purple-800/60">
         <div>
-          <div class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-semibold mb-2">
+          <div class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-purple-500/20 text-fuchsia-300 text-xs font-semibold mb-2">
             <i class="fa-solid fa-microchip"></i>
             <span>Architecture Status & Health</span>
           </div>
           <h3 class="text-xl font-bold">Status Infrastruktur Cloud Project</h3>
-          <p class="text-xs text-slate-300 mt-0.5">Indikator kesiapan arsitektur sistem pada ekosistem Cloud Computing.</p>
+          <p class="text-xs text-slate-300 mt-0.5">Indikator kesiapan arsitektur storefront pada ekosistem Cloud Computing.</p>
         </div>
         <div class="flex items-center space-x-2 text-xs">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -447,7 +510,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
         
         <!-- Service 1: GitHub -->
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-800/40 flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <i class="fa-brands fa-github text-xl text-slate-300"></i>
             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -455,27 +518,27 @@
             </span>
           </div>
           <div class="mt-3">
-            <strong class="block text-sm font-bold text-white">GitHub VCS</strong>
-            <span class="text-[11px] text-slate-400">Git Repo: cloud-cart-hub</span>
+            <strong class="block text-sm font-bold text-white"><span class="cloud-term text-white border-purple-400/60" tabindex="0">GitHub VCS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-brands fa-github mr-1"></i> Version Control System (VCS)</strong>Repositori Git terpusat untuk kontrol versi kode sumber, kolaborasi, dan pemicu webhook CI/CD otomatis.</span></span></strong>
+            <span class="text-[11px] text-slate-400">Git Repo: aetheria-streamer-hub</span>
           </div>
         </div>
 
         <!-- Service 2: Netlify PaaS -->
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-800/40 flex flex-col justify-between">
           <div class="flex items-center justify-between">
-            <i class="fa-solid fa-server text-xl text-cyan-400"></i>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+            <i class="fa-solid fa-server text-xl text-fuchsia-400"></i>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-fuchsia-400 border border-purple-500/30">
               READY
             </span>
           </div>
           <div class="mt-3">
-            <strong class="block text-sm font-bold text-white">Netlify PaaS</strong>
+            <strong class="block text-sm font-bold text-white"><span class="cloud-term text-white border-purple-400/60" tabindex="0">Netlify PaaS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-server mr-1"></i> Platform as a Service (PaaS)</strong>Layanan cloud hosting aplikasi web modern dengan build otomatis, DNS instan, dan global edge CDN tanpa kelola OS/server.</span></span></strong>
             <span class="text-[11px] text-slate-400">CI/CD Webhook Ready</span>
           </div>
         </div>
 
         <!-- Service 3: CDN Assets -->
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-800/40 flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <i class="fa-solid fa-bolt-lightning text-xl text-amber-400"></i>
             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -483,13 +546,13 @@
             </span>
           </div>
           <div class="mt-3">
-            <strong class="block text-sm font-bold text-white">CDN Assets</strong>
-            <span class="text-[11px] text-slate-400">Tailwind + ChartJS + Unsplash</span>
+            <strong class="block text-sm font-bold text-white"><span class="cloud-term text-white border-purple-400/60" tabindex="0">CDN Assets<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-bolt mr-1"></i> Content Delivery Network (CDN)</strong>Jaringan edge server global untuk melayani aset pustaka (Tailwind, ChartJS, Google Fonts) & gambar dengan latensi &lt;45ms.</span></span></strong>
+            <span class="text-[11px] text-slate-400">Tailwind + ChartJS + Edge Caching</span>
           </div>
         </div>
 
         <!-- Service 4: HTTPS Security -->
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-800/40 flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <i class="fa-solid fa-lock text-xl text-emerald-400"></i>
             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -503,7 +566,7 @@
         </div>
 
         <!-- Service 5: Responsive Client UI -->
-        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-800/40 flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <i class="fa-solid fa-mobile-screen-button text-xl text-indigo-400"></i>
             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -518,29 +581,25 @@
 
       </div>
 
-      <div class="mt-5 text-[11px] text-slate-400 flex items-center justify-between">
-        <span>* Status dipetakan sebagai representasi arsitektural proyek akademik Cloud Computing di Universitas Raharja.</span>
-        <span class="font-mono text-cyan-300">Edge Latency: ~28ms</span>
-      </div>
     </div>
 
   </main>
 
   <!-- GLOBAL FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs">
+  <footer class="scroll-popup bg-slate-950 text-slate-400 border-t border-purple-900/40 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         
         <!-- Col 1: Brand -->
         <div class="space-y-3">
           <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-              <i class="fa-solid fa-cloud text-sm"></i>
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-pink-500 flex items-center justify-center text-white">
+              <i class="fa-solid fa-headset text-sm"></i>
             </div>
-            <span class="text-base font-bold text-white">CloudCart HUB</span>
+            <span class="text-base font-bold text-white">Aetheria Streamer HUB</span>
           </div>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Cloud-Based E-Commerce Portfolio dibuat untuk memenuhi evaluasi akademik mata kuliah Cloud Computing (FS403Z).
+            VTuber & Anime Creator Gear 2026. Dibuat untuk memenuhi evaluasi akademik mata kuliah Cloud Computing (FS403Z) di Universitas Raharja.
           </p>
         </div>
 
@@ -548,8 +607,9 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Informasi Mahasiswa</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><strong>Nama:</strong> Risky Wahyudi</li>
-            <li><strong>Prodi:</strong> Computer Science</li>
+            <li><strong>Nama:</strong> Moch Rizky Wahyudi</li>
+            <li><strong>NIM:</strong> 2422416853</li>
+            <li><strong>Prodi:</strong> Strata 1 Teknik Informatika</li>
             <li><strong>Kampus:</strong> Universitas Raharja</li>
             <li><strong>Mata Kuliah:</strong> Cloud Computing</li>
             <li><strong>Kode MK:</strong> FS403Z (TA 26/27)</li>
@@ -560,11 +620,11 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Navigasi Halaman</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home (Portal Utama)</a></li>
-            <li><a href="dashboard.html" class="hover:text-blue-400 transition-colors">Dashboard Analitik</a></li>
-            <li><a href="fitur-sistem.html" class="hover:text-blue-400 transition-colors">Fitur Sistem & Cart</a></li>
-            <li><a href="detail-layanan.html" class="hover:text-blue-400 transition-colors">Product Catalog & Detail</a></li>
-            <li><a href="laporan-data.html" class="hover:text-blue-400 transition-colors">Laporan & Data Transaksi</a></li>
+            <li><a href="index.html" class="hover:text-purple-400 transition-colors">Home (Portal Utama)</a></li>
+            <li><a href="dashboard.html" class="hover:text-purple-400 transition-colors">Dashboard Analitik</a></li>
+            <li><a href="fitur-sistem.html" class="hover:text-purple-400 transition-colors">Cart & Simulasi Belanja</a></li>
+            <li><a href="detail-layanan.html" class="hover:text-purple-400 transition-colors">Gear Catalog & Detail</a></li>
+            <li><a href="laporan-data.html" class="hover:text-purple-400 transition-colors">Laporan & Data Transaksi</a></li>
           </ul>
         </div>
 
@@ -572,22 +632,33 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Stack Cloud Computing</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Netlify PaaS Static Engine</li>
-            <li><i class="fa-brands fa-github text-slate-300 mr-1.5"></i> GitHub Version Control</li>
-            <li><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Global Fastly / Cloudflare CDN</li>
-            <li><i class="fa-solid fa-chart-simple text-blue-400 mr-1.5"></i> Chart.js Visualization</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Netlify <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">PaaS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-server mr-1"></i> Platform as a Service</strong>Hosting statis otomatis tanpa kelola server fisik.</span></span> Static Engine</li>
+            <li><i class="fa-brands fa-github text-slate-300 mr-1.5"></i> GitHub <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">VCS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-brands fa-github mr-1"></i> Version Control System</strong>Pelacakan commit kode dan integrasi webhook CI/CD.</span></span> Version Control</li>
+            <li><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Global Fastly / Cloudflare <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">CDN<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-bolt mr-1"></i> Content Delivery Network</strong>Distribusi aset visual merchandise dan pustaka Tailwind.</span></span></li>
+            <li><i class="fa-solid fa-chart-simple text-fuchsia-400 mr-1.5"></i> Chart.js Visualization</li>
             <li><i class="fa-solid fa-shield text-cyan-400 mr-1.5"></i> Simulated Academic Data</li>
           </ul>
         </div>
 
       </div>
 
-      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
-        <p>© 2026 CloudCart HUB — Cloud Computing Final Project. Created by <strong>Risky Wahyudi</strong> (Universitas Raharja).</p>
+      <div class="pt-8 border-t border-purple-900/40 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+        <p>© 2026 Aetheria Streamer HUB — Cloud Computing Final Project. Created by <strong>Moch Rizky Wahyudi</strong> (Universitas Raharja).</p>
         <p class="text-slate-400 font-medium">All Assets Loaded via External CDN • Zero Broken Links</p>
       </div>
     </div>
   </footer>
+
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button 
+    id="backToTopBtn" 
+    onclick="scrollToTop()" 
+    class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-2xl bg-purple-600/90 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/30 backdrop-blur-xs border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 pointer-events-none hover:scale-110 active:scale-95 group focus:outline-none"
+    aria-label="Back to Top"
+    title="Kembali ke atas"
+  >
+    <i class="fa-solid fa-arrow-up text-sm transition-transform duration-200 group-hover:-translate-y-0.5"></i>
+  </button>
 
   <!-- EMBEDDED JAVASCRIPT: Chart.js Init & Interactive Handlers -->
   <script>
@@ -613,6 +684,43 @@
         });
       }
 
+      // Scroll Pop-up Animation via IntersectionObserver
+      if ('IntersectionObserver' in window) {
+        const popupObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.scroll-popup').forEach(el => {
+          popupObserver.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.scroll-popup').forEach(el => {
+          el.classList.add('is-visible');
+        });
+      }
+
+      // Floating Back to Top Button Logic
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+          } else {
+            backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+          }
+        });
+      }
+
       // Initialize Line Chart (Sales Revenue)
       initSalesChart();
 
@@ -620,13 +728,20 @@
       initCategoryChart();
     });
 
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
     function initSalesChart() {
       const ctx = document.getElementById('salesLineChart');
       if (!ctx) return;
 
       const labels = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli'];
-      const revenueData = [4800000, 5600000, 6200000, 7100000, 7800000, 8050000, 9200000];
-      const ordersData = [120, 145, 160, 185, 205, 210, 223];
+      const revenueData = [6200000, 7400000, 8100000, 9500000, 10200000, 10650000, 12800000];
+      const ordersData = [150, 180, 205, 240, 275, 290, 342];
 
       salesChartInstance = new Chart(ctx, {
         type: 'line',
@@ -636,27 +751,21 @@
             {
               label: 'Revenue (Rp)',
               data: revenueData,
-              borderColor: '#2563EB',
-              backgroundColor: 'rgba(37, 99, 235, 0.1)',
+              borderColor: '#9333EA',
+              backgroundColor: 'rgba(147, 51, 234, 0.1)',
               borderWidth: 3,
               fill: true,
               tension: 0.35,
-              pointBackgroundColor: '#2563EB',
-              pointRadius: 5,
-              pointHoverRadius: 7,
               yAxisID: 'y'
             },
             {
-              label: 'Orders Count',
+              label: 'Orders Qty',
               data: ordersData,
-              borderColor: '#06B6D4',
+              borderColor: '#EC4899',
               backgroundColor: 'transparent',
               borderWidth: 2,
               borderDash: [5, 5],
               tension: 0.35,
-              pointBackgroundColor: '#06B6D4',
-              pointRadius: 4,
-              pointHoverRadius: 6,
               yAxisID: 'y1'
             }
           ]
@@ -666,24 +775,28 @@
           maintainAspectRatio: false,
           interaction: {
             mode: 'index',
-            intersect: false,
+            intersect: false
           },
           plugins: {
             legend: {
-              display: false
+              position: 'top',
+              labels: {
+                boxWidth: 12,
+                font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' }
+              }
             },
             tooltip: {
               backgroundColor: '#0F172A',
               titleFont: { family: 'Plus Jakarta Sans', size: 12 },
-              bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
+              bodyFont: { family: 'Plus Jakarta Sans', size: 11 },
               padding: 10,
               callbacks: {
                 label: function(context) {
                   let label = context.dataset.label || '';
                   if (label.includes('Revenue')) {
-                    return label + ': Rp ' + context.parsed.y.toLocaleString('id-ID');
+                    return ' ' + label + ': Rp ' + context.parsed.y.toLocaleString('id-ID');
                   }
-                  return label + ': ' + context.parsed.y + ' pesanan';
+                  return ' ' + label + ': ' + context.parsed.y + ' order';
                 }
               }
             }
@@ -696,10 +809,9 @@
               type: 'linear',
               display: true,
               position: 'left',
-              grid: { color: '#E2E8F0' },
               ticks: {
                 callback: function(value) {
-                  return 'Rp ' + (value / 1000000) + 'jt';
+                  return 'Rp ' + (value / 1000000) + ' Jt';
                 }
               }
             },
@@ -726,14 +838,14 @@
       categoryChartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Electronics', 'Fashion', 'Home & Living', 'Accessories'],
+          labels: ['Streaming Audio', 'Motion & Visuals', 'Rig & Studio', 'Anime Peripherals'],
           datasets: [{
-            data: [45, 25, 18, 12],
+            data: [35, 30, 20, 15],
             backgroundColor: [
-              '#2563EB',
               '#6366F1',
-              '#06B6D4',
-              '#F59E0B'
+              '#A855F7',
+              '#EC4899',
+              '#06B6D4'
             ],
             borderWidth: 2,
             borderColor: '#FFFFFF',
@@ -766,13 +878,13 @@
       if (salesChartInstance) {
         // Random subtle oscillation for simulation interactivity
         salesChartInstance.data.datasets[0].data = [
-          4800000 + Math.floor(Math.random() * 200000),
-          5600000 + Math.floor(Math.random() * 200000),
-          6200000 + Math.floor(Math.random() * 200000),
-          7100000 + Math.floor(Math.random() * 200000),
-          7800000 + Math.floor(Math.random() * 200000),
-          8050000 + Math.floor(Math.random() * 200000),
-          9200000 + Math.floor(Math.random() * 300000)
+          6200000 + Math.floor(Math.random() * 250000),
+          7400000 + Math.floor(Math.random() * 250000),
+          8100000 + Math.floor(Math.random() * 250000),
+          9500000 + Math.floor(Math.random() * 250000),
+          10200000 + Math.floor(Math.random() * 250000),
+          10650000 + Math.floor(Math.random() * 250000),
+          12800000 + Math.floor(Math.random() * 400000)
         ];
         salesChartInstance.update();
       }

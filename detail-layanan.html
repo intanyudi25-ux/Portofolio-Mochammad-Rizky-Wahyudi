@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Katalog Produk & Detail Layanan — CloudCart HUB | Risky Wahyudi</title>
+  <title>Katalog Gear & Detail Layanan — Aetheria Streamer HUB | Moch Rizky Wahyudi</title>
   
   <!-- Google Fonts CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -21,77 +21,155 @@
       theme: {
         extend: {
           colors: {
-            primary: '#2563EB',
-            secondary: '#4F46E5',
-            accent: '#06B6D4',
-            dark: '#0F172A',
+            primary: '#6366F1',
+            secondary: '#A855F7',
+            accent: '#EC4899',
+            neonCyan: '#06B6D4',
+            darkVoid: '#0B0F19',
+            darkSlate: '#111827',
             bgLight: '#F8FAFC'
           },
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
           }
         }
       }
     }
   </script>
+
+  <style>
+    /* Scroll Pop-up Animation */
+    .scroll-popup {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-popup.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-popup {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    /* Academic Cloud Term Tooltip Styles */
+    .cloud-term {
+      position: relative;
+      display: inline-flex;
+      align-items: baseline;
+      cursor: help;
+      border-bottom: 1.5px dotted #c084fc;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    .cloud-term:hover {
+      color: #a855f7;
+      border-bottom-style: solid;
+    }
+    .cloud-term .tooltip-box {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 270px;
+      background: #0f172a;
+      color: #f8fafc;
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.45;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      z-index: 70;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cloud-term .tooltip-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #0f172a transparent transparent transparent;
+    }
+    .cloud-term:hover .tooltip-box,
+    .cloud-term:focus-visible .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
 
   <!-- TOP ACADEMIC NOTIFICATION BAR -->
-  <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 text-white text-xs py-2 px-4 border-b border-slate-700/60 shadow-sm">
+  <div class="bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 text-white text-xs py-2 px-4 border-b border-purple-800/40 shadow-sm">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <div class="flex items-center space-x-2">
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/20 text-cyan-300 border border-cyan-400/30">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/20 text-fuchsia-300 border border-fuchsia-400/30">
           <i class="fa-solid fa-graduation-cap mr-1"></i> FINAL PROJECT
         </span>
         <span class="text-slate-300">Mata Kuliah: <strong class="text-white">Cloud Computing (FS403Z)</strong> — TA 2026/2027</span>
       </div>
-      <div class="flex items-center space-x-4 text-slate-300">
-        <span><i class="fa-solid fa-user-graduate text-cyan-400 mr-1"></i> <strong>Risky Wahyudi</strong></span>
-        <span><i class="fa-solid fa-university text-blue-400 mr-1"></i> Universitas Raharja</span>
+      <div class="flex items-center space-x-3 text-slate-300">
+        <span><i class="fa-solid fa-user-graduate text-fuchsia-400 mr-1"></i> <strong>Moch Rizky Wahyudi</strong></span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/20 text-cyan-300 border border-cyan-400/30 font-mono"><i class="fa-solid fa-id-card mr-1 text-cyan-300"></i>NIM: 2422416853</span>
+        <span><i class="fa-solid fa-university text-indigo-400 mr-1"></i> Universitas Raharja</span>
         <span class="hidden md:inline text-cyan-300"><i class="fa-solid fa-bolt mr-1"></i> Fastly Edge CDN Asset Delivery</span>
       </div>
     </div>
   </div>
 
   <!-- MAIN NAVIGATION -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+  <header class="scroll-popup sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         
         <!-- Brand Logo -->
         <a href="index.html" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-            <i class="fa-solid fa-cloud text-lg"></i>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-500/25 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-headset text-lg"></i>
           </div>
           <div>
             <div class="flex items-center space-x-1.5">
-              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">CloudCart</span>
-              <span class="text-xs font-extrabold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 border border-blue-200">HUB</span>
+              <span class="text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Aetheria</span>
+              <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 border border-purple-200">2026 HUB</span>
             </div>
-            <p class="text-[10px] text-slate-500 font-medium">Cloud E-Commerce Portfolio</p>
+            <p class="text-[10px] text-slate-500 font-medium">VTuber & Anime Creator Gear</p>
           </div>
         </a>
 
         <!-- Desktop Navigation Links -->
         <nav class="hidden md:flex items-center space-x-1">
-          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-house text-slate-400"></i>
             <span>Home</span>
           </a>
-          <a href="dashboard.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="dashboard.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-chart-pie text-slate-400"></i>
             <span>Dashboard</span>
           </a>
-          <a href="fitur-sistem.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="fitur-sistem.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-cart-shopping text-slate-400"></i>
-            <span>Features</span>
+            <span>Cart & Features</span>
           </a>
-          <a href="detail-layanan.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200/60 shadow-xs flex items-center space-x-1.5">
-            <i class="fa-solid fa-boxes-stacked text-blue-600"></i>
-            <span>Product Catalog</span>
+          <a href="detail-layanan.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-purple-50 text-purple-700 border border-purple-200/60 shadow-xs flex items-center space-x-1.5">
+            <i class="fa-solid fa-boxes-stacked text-purple-600"></i>
+            <span>Gear Catalog</span>
           </a>
-          <a href="laporan-data.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
+          <a href="laporan-data.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-slate-100 transition-colors flex items-center space-x-1.5">
             <i class="fa-solid fa-file-invoice text-slate-400"></i>
             <span>Reports</span>
           </a>
@@ -99,14 +177,14 @@
 
         <!-- Right Quick Action -->
         <div class="hidden md:flex items-center space-x-3">
-          <a href="fitur-sistem.html" class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all">
-            <i class="fa-solid fa-cart-shopping mr-2"></i> Buka Keranjang
+          <a href="fitur-sistem.html" class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 shadow-md shadow-purple-500/20 transition-all">
+            <i class="fa-solid fa-cart-shopping mr-1.5"></i> Buka Keranjang
           </a>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="md:hidden flex items-center">
-          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-purple-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
             <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
@@ -122,19 +200,14 @@
         <i class="fa-solid fa-chart-pie mr-2 text-slate-400"></i> Dashboard
       </a>
       <a href="fitur-sistem.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
-        <i class="fa-solid fa-cart-shopping mr-2 text-slate-400"></i> Features
+        <i class="fa-solid fa-cart-shopping mr-2 text-slate-400"></i> Cart & Features
       </a>
-      <a href="detail-layanan.html" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-blue-50 text-blue-700">
-        <i class="fa-solid fa-boxes-stacked mr-2 text-blue-600"></i> Product Catalog
+      <a href="detail-layanan.html" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-purple-50 text-purple-700">
+        <i class="fa-solid fa-boxes-stacked mr-2 text-purple-600"></i> Gear Catalog
       </a>
       <a href="laporan-data.html" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100">
         <i class="fa-solid fa-file-invoice mr-2 text-slate-400"></i> Reports
       </a>
-      <div class="pt-2">
-        <a href="fitur-sistem.html" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700">
-          <i class="fa-solid fa-cart-shopping mr-2"></i> Buka Keranjang
-        </a>
-      </div>
     </div>
   </header>
 
@@ -142,28 +215,28 @@
   <main class="flex-grow py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-8">
     
     <!-- PAGE TITLE -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+    <div class="scroll-popup flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
       <div>
-        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 text-xs font-semibold mb-2">
+        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-xs font-semibold mb-2">
           <i class="fa-solid fa-layer-group"></i>
-          <span>Katalog Produk Berbasis Cloud CDN</span>
+          <span>Katalog Gear Berbasis Cloud Edge CDN</span>
         </div>
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Katalog Produk & Spesifikasi Layanan</h1>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Katalog Creator Gear & Spesifikasi Layanan</h1>
         <p class="text-sm text-slate-600 mt-1 max-w-2xl">
-          Jelajahi portofolio item e-commerce dengan sistem filter kategori, pencarian live instan, pengurutan harga multi-kriteria, dan modal detail spesifikasi teknis.
+          Eksplorasi portofolio perlengkapan streaming anime & VTuber 2026. Didukung pencarian instan, filter kategori multi-tier, sorting harga, dan modal spesifikasi teknis lengkap.
         </p>
       </div>
 
       <!-- Quick count badge -->
       <div class="flex items-center space-x-2">
         <span class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-xs">
-          Menampilkan: <strong id="productCountLabel" class="text-blue-600">8</strong> Produk
+          Menampilkan: <strong id="productCountLabel" class="text-purple-600">8</strong> S-Tier Gear
         </span>
       </div>
     </div>
 
     <!-- FILTER & SEARCH CONTROLS BAR -->
-    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4">
+    <div class="scroll-popup bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
         
         <!-- Live Search Input (5 Cols) -->
@@ -172,28 +245,28 @@
           <input 
             type="text" 
             id="searchInput" 
-            placeholder="Cari nama produk, spesifikasi, atau tag..." 
-            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+            placeholder="Cari nama gear, spesifikasi mic, sensor cam..." 
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-purple-500 focus:bg-white transition-colors"
             oninput="applyFilterAndSearch()"
           >
         </div>
 
         <!-- Category Filter Pills (4 Cols) -->
         <div class="md:col-span-4 flex flex-wrap gap-1.5" id="categoryButtonsContainer">
-          <button onclick="setCategory('All')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-xs" data-category="All">
+          <button onclick="setCategory('All')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-xs" data-category="All">
             All
           </button>
-          <button onclick="setCategory('Electronics')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Electronics">
-            Electronics
+          <button onclick="setCategory('Streaming Audio')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Streaming Audio">
+            Streaming Audio
           </button>
-          <button onclick="setCategory('Fashion')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Fashion">
-            Fashion
+          <button onclick="setCategory('Motion & Visuals')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Motion & Visuals">
+            Motion & Visuals
           </button>
-          <button onclick="setCategory('Home & Living')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Home & Living">
-            Home & Living
+          <button onclick="setCategory('Rig & Studio')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Rig & Studio">
+            Rig & Studio
           </button>
-          <button onclick="setCategory('Accessories')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Accessories">
-            Accessories
+          <button onclick="setCategory('Anime Peripherals')" class="category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-category="Anime Peripherals">
+            Anime Peripherals
           </button>
         </div>
 
@@ -203,7 +276,7 @@
           <select 
             id="sortSelect" 
             onchange="applyFilterAndSearch()" 
-            class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:border-blue-500"
+            class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:border-purple-500"
           >
             <option value="name-asc">Product Name: A - Z</option>
             <option value="price-asc">Price: Low to High</option>
@@ -216,7 +289,7 @@
     </div>
 
     <!-- PRODUCT CARDS GRID -->
-    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div id="catalogGrid" class="scroll-popup grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Injected dynamically via JavaScript -->
     </div>
 
@@ -225,164 +298,109 @@
       <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl mb-3">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <h3 class="text-lg font-bold text-slate-800">Tidak ada produk yang cocok</h3>
+      <h3 class="text-lg font-bold text-slate-800">Tidak ada gear streaming ditemukan</h3>
       <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-        Kata kunci atau kombinasi filter Anda tidak menghasilkan produk apa pun. Coba gunakan kata kunci umum atau reset filter kategori.
+        Kata kunci atau filter Anda tidak cocok dengan katalog saat ini. Silakan reset filter untuk melihat semua gear.
       </p>
-      <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors">
-        Reset Semua Filter
+      <button onclick="setCategory('All'); document.getElementById('searchInput').value='';" class="mt-4 px-4 py-2 rounded-xl text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors">
+        Reset Filter
       </button>
-    </div>
-
-    <!-- SECTION: PRODUCT & CLOUD ASSET MANAGEMENT EXPLANATION -->
-    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs">
-      <div class="max-w-3xl mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-          Modul Arsitektur Cloud
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">
-          Manajemen Katalog & Distribusi Aset Berbasis CDN
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-1">
-          Pada arsitektur modern Cloud Computing, manajemen katalog e-commerce dipisahkan antara layer penyimpanan data dan layer distribusi aset multimedia (Unsplash CDN).
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg mb-3">
-            <i class="fa-solid fa-database"></i>
-          </div>
-          <h4 class="font-bold text-slate-900 text-sm">Product Catalog Management</h4>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-            Struktur data produk didefinisikan secara modular dalam format JSON client-side, memungkinkan penambahan metadata produk tanpa perubahan skema database kompleks.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-lg mb-3">
-            <i class="fa-solid fa-tags"></i>
-          </div>
-          <h4 class="font-bold text-slate-900 text-sm">Price & Stock Management</h4>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-            Perubahan harga dan status stok dapat disinkronkan secara global melalui state engine, meminimalisir overhead query database secara berulang.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-lg mb-3">
-            <i class="fa-solid fa-ticket"></i>
-          </div>
-          <h4 class="font-bold text-slate-900 text-sm">Discount Management Engine</h4>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-            Algoritma validasi kupon diskon persentase yang dapat diperluas untuk promosi flash sale, batasan kuota, dan kupon berjenjang berbasis nilai belanja.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg mb-3">
-            <i class="fa-solid fa-network-wired"></i>
-          </div>
-          <h4 class="font-bold text-slate-900 text-sm">CDN-Based Asset Delivery</h4>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-            Semua gambar produk disajikan melalui edge servers Unsplash CDN dengan kompresi WebP/JPEG otomatis, mengurangi bandwidth origin server hingga 95%.
-          </p>
-        </div>
-
-      </div>
     </div>
 
   </main>
 
-  <!-- PRODUCT DETAIL MODAL -->
-  <div id="productDetailModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-200 shadow-2xl relative animate-in fade-in duration-200">
+  <!-- PRODUCT DETAIL MODAL (Pop-up dialog) -->
+  <div id="productDetailModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 overflow-hidden my-8 animate-in fade-in zoom-in duration-200">
       
-      <!-- Close button -->
-      <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center text-sm transition-colors">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <!-- Modal Body -->
-      <div class="p-6 sm:p-8">
-        
-        <!-- Product Image Showcase -->
-        <div class="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-900 mb-6">
-          <img id="modalProductImage" src="" alt="" class="w-full h-full object-cover">
-          <span id="modalProductCategory" class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow-xs">
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <span id="modalCategoryBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">
             Category
           </span>
-          <span id="modalProductStockBadge" class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white shadow-xs">
-            In Stock
+          <span class="text-xs text-slate-400">•</span>
+          <span class="text-xs text-emerald-600 font-semibold flex items-center">
+            <i class="fa-solid fa-circle-check mr-1 text-[10px]"></i> Cloud Stock Synced
           </span>
         </div>
+        <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
 
-        <div class="space-y-4">
+      <!-- Modal Body (Two columns on desktop) -->
+      <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Left: Image Preview & CDN Spec -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+            <img id="modalProductImage" src="" alt="Detail Produk" class="w-full h-full object-cover">
+          </div>
           
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+            <span class="font-bold text-slate-700 block text-[11px] uppercase tracking-wider">Cloud Asset Delivery:</span>
+            <div class="flex items-center justify-between text-slate-600 text-[11px]">
+              <span>Storage Provider</span>
+              <span class="font-mono text-purple-900 font-semibold">Edge CDN Cloud Cache</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-600 text-[11px]">
+              <span>Image Optimization</span>
+              <span class="font-mono text-emerald-600 font-semibold">WebP Auto-Format</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-600 text-[11px]">
+              <span>Cache Expiry</span>
+              <span class="font-mono text-slate-900">365 Days Immutable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Information & Technical Specs -->
+        <div class="md:col-span-7 flex flex-col justify-between">
+          <div class="space-y-4">
             <div>
-              <h2 id="modalProductName" class="text-2xl font-extrabold text-slate-900">Product Name</h2>
-              <div class="flex items-center space-x-2 mt-1">
-                <div class="flex text-amber-400 text-xs" id="modalRatingStars">
-                  <!-- stars injected here -->
+              <h2 id="modalProductName" class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
+                Product Title
+              </h2>
+              <div class="mt-2 flex items-center space-x-3 text-xs">
+                <span class="text-purple-600 font-extrabold text-xl sm:text-2xl" id="modalProductPrice">
+                  Rp 0
+                </span>
+                <span class="text-slate-300">|</span>
+                <div class="flex items-center text-amber-400" id="modalRatingStars">
+                  <!-- dynamic stars -->
                 </div>
-                <span id="modalRatingNumber" class="text-xs font-bold text-slate-700">4.9</span>
-                <span class="text-slate-300">•</span>
-                <span id="modalStockCount" class="text-xs font-medium text-slate-500">Stok: 24 unit</span>
+                <span class="text-slate-500 font-medium" id="modalRatingNumber">4.8</span>
               </div>
             </div>
-            
-            <div class="text-left sm:text-right">
-              <span class="text-[10px] text-slate-400 block font-medium">Harga Resmi CloudCart</span>
-              <span id="modalProductPrice" class="text-2xl font-extrabold text-blue-600">Rp 0</span>
+
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Deskripsi Gear</h4>
+              <p id="modalProductDescription" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Deskripsi gear streaming detail di sini.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Spesifikasi Detail</h4>
+              <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
+                <table class="w-full text-left divide-y divide-slate-200">
+                  <tbody id="modalSpecsTableBody" class="divide-y divide-slate-100 bg-white">
+                    <!-- Injected specs rows -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
-          <!-- Description -->
-          <div>
-            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-1">Deskripsi Produk</h4>
-            <p id="modalProductDescription" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Deskripsi lengkap produk...
-            </p>
-          </div>
-
-          <!-- Specifications Table -->
-          <div>
-            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Spesifikasi Teknis</h4>
-            <div class="rounded-xl border border-slate-200 overflow-hidden text-xs">
-              <table class="w-full text-left divide-y divide-slate-100">
-                <tbody id="modalSpecsTableBody" class="divide-y divide-slate-100 bg-slate-50/50">
-                  <!-- dynamic specs rows -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Cloud Asset Delivery Info Callout -->
-          <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <i class="fa-solid fa-bolt text-blue-600"></i>
-              <span><strong>Cloud Asset Delivery:</strong> Disajikan via Unsplash CDN Anycast Edge Caching.</span>
-            </div>
-            <span class="font-mono text-[10px] font-bold bg-blue-200/70 px-2 py-0.5 rounded text-blue-800">EDGE 200 OK</span>
-          </div>
-
-          <!-- Action buttons -->
-          <div class="pt-4 flex flex-col sm:flex-row gap-3">
-            <a 
-              href="fitur-sistem.html" 
-              class="flex-1 py-3 px-4 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 text-center shadow-md shadow-blue-500/20 transition-all flex items-center justify-center space-x-2"
-            >
-              <i class="fa-solid fa-cart-plus mr-1"></i>
-              <span>Simulasi Tambah & Beli di Keranjang</span>
-            </a>
-            <button 
-              onclick="closeProductModal()" 
-              class="py-3 px-5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
-            >
+          <!-- Action buttons inside modal -->
+          <div class="pt-6 border-t border-slate-100 mt-6 grid grid-cols-2 gap-3">
+            <button onclick="closeProductModal()" class="py-2.5 px-4 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
               Tutup
             </button>
+            <a href="fitur-sistem.html" class="py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 text-center transition-colors flex items-center justify-center">
+              <i class="fa-solid fa-cart-shopping mr-1.5"></i> Buka Keranjang
+            </a>
           </div>
 
         </div>
@@ -392,21 +410,32 @@
     </div>
   </div>
 
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button 
+    id="backToTopBtn" 
+    onclick="scrollToTop()" 
+    class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-2xl bg-purple-600/90 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/30 backdrop-blur-xs border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 pointer-events-none hover:scale-110 active:scale-95 group focus:outline-none"
+    aria-label="Back to Top"
+    title="Kembali ke atas"
+  >
+    <i class="fa-solid fa-arrow-up text-sm transition-transform duration-200 group-hover:-translate-y-0.5"></i>
+  </button>
+
   <!-- GLOBAL FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs mt-12">
+  <footer class="scroll-popup bg-slate-950 text-slate-400 border-t border-purple-900/40 text-xs mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         
         <!-- Col 1: Brand -->
         <div class="space-y-3">
           <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-              <i class="fa-solid fa-cloud text-sm"></i>
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-pink-500 flex items-center justify-center text-white">
+              <i class="fa-solid fa-headset text-sm"></i>
             </div>
-            <span class="text-base font-bold text-white">CloudCart HUB</span>
+            <span class="text-base font-bold text-white">Aetheria Streamer HUB</span>
           </div>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Cloud-Based E-Commerce Portfolio dibuat untuk memenuhi evaluasi akademik mata kuliah Cloud Computing (FS403Z).
+            VTuber & Anime Creator Gear 2026. Dibuat untuk memenuhi evaluasi akademik mata kuliah Cloud Computing (FS403Z) di Universitas Raharja.
           </p>
         </div>
 
@@ -414,8 +443,9 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Informasi Mahasiswa</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><strong>Nama:</strong> Risky Wahyudi</li>
-            <li><strong>Prodi:</strong> Computer Science</li>
+            <li><strong>Nama:</strong> Moch Rizky Wahyudi</li>
+            <li><strong>NIM:</strong> 2422416853</li>
+            <li><strong>Prodi:</strong> Strata 1 Teknik Informatika</li>
             <li><strong>Kampus:</strong> Universitas Raharja</li>
             <li><strong>Mata Kuliah:</strong> Cloud Computing</li>
             <li><strong>Kode MK:</strong> FS403Z (TA 26/27)</li>
@@ -426,11 +456,11 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Navigasi Halaman</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home (Portal Utama)</a></li>
-            <li><a href="dashboard.html" class="hover:text-blue-400 transition-colors">Dashboard Analitik</a></li>
-            <li><a href="fitur-sistem.html" class="hover:text-blue-400 transition-colors">Fitur Sistem & Cart</a></li>
-            <li><a href="detail-layanan.html" class="hover:text-blue-400 transition-colors">Product Catalog & Detail</a></li>
-            <li><a href="laporan-data.html" class="hover:text-blue-400 transition-colors">Laporan & Data Transaksi</a></li>
+            <li><a href="index.html" class="hover:text-purple-400 transition-colors">Home (Portal Utama)</a></li>
+            <li><a href="dashboard.html" class="hover:text-purple-400 transition-colors">Dashboard Analitik</a></li>
+            <li><a href="fitur-sistem.html" class="hover:text-purple-400 transition-colors">Cart & Simulasi Belanja</a></li>
+            <li><a href="detail-layanan.html" class="hover:text-purple-400 transition-colors">Gear Catalog & Detail</a></li>
+            <li><a href="laporan-data.html" class="hover:text-purple-400 transition-colors">Laporan & Data Transaksi</a></li>
           </ul>
         </div>
 
@@ -438,18 +468,18 @@
         <div>
           <h4 class="text-white font-bold text-sm mb-3">Stack Cloud Computing</h4>
           <ul class="space-y-1.5 text-slate-400">
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Netlify PaaS Static Engine</li>
-            <li><i class="fa-brands fa-github text-slate-300 mr-1.5"></i> GitHub Version Control</li>
-            <li><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Global Fastly / Cloudflare CDN</li>
-            <li><i class="fa-solid fa-chart-simple text-blue-400 mr-1.5"></i> Chart.js Visualization</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Netlify <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">PaaS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-server mr-1"></i> Platform as a Service</strong>Hosting statis otomatis tanpa kelola server fisik.</span></span> Static Engine</li>
+            <li><i class="fa-brands fa-github text-slate-300 mr-1.5"></i> GitHub <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">VCS<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-brands fa-github mr-1"></i> Version Control System</strong>Pelacakan commit kode dan integrasi webhook CI/CD.</span></span> Version Control</li>
+            <li><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Global Fastly / Cloudflare <span class="cloud-term text-slate-300 border-purple-400/60" tabindex="0">CDN<span class="tooltip-box"><strong class="text-fuchsia-300 block mb-0.5"><i class="fa-solid fa-bolt mr-1"></i> Content Delivery Network</strong>Distribusi aset visual merchandise dan pustaka Tailwind.</span></span></li>
+            <li><i class="fa-solid fa-chart-simple text-fuchsia-400 mr-1.5"></i> Chart.js Visualization</li>
             <li><i class="fa-solid fa-shield text-cyan-400 mr-1.5"></i> Simulated Academic Data</li>
           </ul>
         </div>
 
       </div>
 
-      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
-        <p>© 2026 CloudCart HUB — Cloud Computing Final Project. Created by <strong>Risky Wahyudi</strong> (Universitas Raharja).</p>
+      <div class="pt-8 border-t border-purple-900/40 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+        <p>© 2026 Aetheria Streamer HUB — Cloud Computing Final Project. Created by <strong>Moch Rizky Wahyudi</strong> (Universitas Raharja).</p>
         <p class="text-slate-400 font-medium">All Assets Loaded via External CDN • Zero Broken Links</p>
       </div>
     </div>
@@ -457,135 +487,135 @@
 
   <!-- EMBEDDED JAVASCRIPT: Product Catalog Database, Filter & Sorter -->
   <script>
-    // Product catalog data with realistic specs and external Unsplash CDN URLs
+    // Product catalog data with realistic specs and generated local assets
     const productsData = [
       {
         id: 1,
-        name: 'CloudBook Pro Laptop 16"',
-        category: 'Electronics',
-        price: 18500000,
+        name: 'Aetheria Iris 4K StreamCam',
+        category: 'Motion & Visuals',
+        price: 2850000,
         rating: 4.9,
-        stock: 14,
-        image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=80',
-        description: 'Laptop workstation bertenaga tinggi untuk developer cloud dan kreator konten digital. Dilengkapi pendingin vapor chamber dan layar Liquid Retina XDR 120Hz.',
+        stock: 15,
+        image: '/src/assets/images/product_neural_tracker_rig_1791358637236.jpg',
+        description: 'Kamera AI face-tracking 4K 60fps dengan low-light sensor Sony STARVIS untuk tracking Live2D ekspresif dan VRChat/3D avatar rendering tanpa lag.',
         specs: [
-          { label: 'Prosesor', value: '12-Core Cloud Silicon Gen-4' },
-          { label: 'Memori RAM', value: '32 GB Unified LPDDR5X' },
-          { label: 'Penyimpanan', value: '1 TB NVMe SSD Gen4' },
-          { label: 'Baterai', value: 'Hingga 21 Jam Pemakaian' },
-          { label: 'Bobot', value: '1.6 kg Slim Metal Chassis' }
+          { label: 'Resolusi Sensor', value: '4K UHD (3840x2160) @ 60 FPS' },
+          { label: 'AI Tracking Engine', value: 'Eye & Pupil Dual-Point Tracker' },
+          { label: 'Field of View', value: '90° Adjustable Glass Lens' },
+          { label: 'Konektivitas', value: 'USB-C 3.2 Gen2 Plug & Play' },
+          { label: 'Kompatibilitas', value: 'VTube Studio, OBS Studio, Discord' }
         ]
       },
       {
         id: 2,
-        name: 'Aero Wireless Headphones ANC',
-        category: 'Electronics',
-        price: 1450000,
+        name: 'PrismWave RGB Studio Condenser Mic',
+        category: 'Streaming Audio',
+        price: 1750000,
         rating: 4.8,
-        stock: 35,
-        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',
-        description: 'Headphone over-ear nirkabel dengan Active Noise Cancellation adaptif, driver titanium 40mm, dan mikrofon beamforming untuk rapat virtual tanpa gangguan bising.',
+        stock: 28,
+        image: '/src/assets/images/product_broadcast_sakura_mic_1791358649007.jpg',
+        description: 'Mikrofon kondenser studio dual-capsule dengan shockmount suspensi internal, touch-mute sensor, dan efek ambient waveform RGB yang sinkron dengan streaming.',
         specs: [
-          { label: 'Konektivitas', value: 'Bluetooth 5.3 + Multi-point' },
-          { label: 'Noise Cancelling', value: 'Hybrid ANC hingga -38dB' },
-          { label: 'Daya Tahan Baterai', value: '40 Jam (ANC On)' },
-          { label: 'Fast Charging', value: '10 menit pengisian = 4 jam pemakaian' }
+          { label: 'Polar Pattern', value: 'Cardioid & Omnidirectional' },
+          { label: 'Sample Rate', value: '192 kHz / 24-bit Hi-Res Audio' },
+          { label: 'Frequency Response', value: '20 Hz – 20 kHz Studio Grade' },
+          { label: 'Fitur Khusus', value: 'Built-in Pop Filter & Touch Mute' }
         ]
       },
       {
         id: 3,
-        name: 'SmartWatch X Cloud Edition',
-        category: 'Accessories',
-        price: 2200000,
-        rating: 4.7,
-        stock: 22,
-        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80',
-        description: 'Smartwatch tahan air 5 ATM dengan layar AMOLED Always-On, GPS dual-band, sensor SpO2, dan sinkronisasi otomatis ke dashboard kesehatan berbasis cloud.',
+        name: 'NekoPulse Pro Wireless ANC Headset',
+        category: 'Anime Peripherals',
+        price: 1450000,
+        rating: 4.9,
+        stock: 35,
+        image: '/src/assets/images/product_nekopulse_anc_headset_1791358679133.jpg',
+        description: 'Headset over-ear wireless gaming ultra-low latency dengan aksen telinga kucing magnetik, Active Noise Cancellation adaptif, dan mikrofon beamforming jernih.',
         specs: [
-          { label: 'Layar', value: '1.43" AMOLED 466x466 px' },
-          { label: 'Sensor', value: 'Heart Rate, SpO2, Barometer, ECG' },
-          { label: 'Waterproof', value: '50m (5 ATM) Water Resistant' },
-          { label: 'Konektivitas', value: 'BLE 5.2 / NFC Payment' }
+          { label: 'Konektivitas', value: '2.4 GHz Ultra-Low Latency + BT 5.3' },
+          { label: 'Driver Suara', value: '50mm Titanium Neodymium Driver' },
+          { label: 'Daya Tahan Baterai', value: '50 Jam (RGB Off) / 32 Jam (RGB On)' },
+          { label: 'Kustomisasi', value: 'Magnetic Cat-Ear & RGB Sync App' }
         ]
       },
       {
         id: 4,
-        name: 'CloudDesk Mechanical RGB Keyboard',
-        category: 'Accessories',
-        price: 850000,
-        rating: 4.9,
-        stock: 19,
-        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80',
-        description: 'Mechanical keyboard 75% compact dengan PCB hot-swappable, peredam suara silicone gasket, dan keycaps PBT dye-sublimation bertema Cloud Modern.',
+        name: 'Aetheria Deck 15-Key Tactile Controller',
+        category: 'Rig & Studio',
+        price: 2100000,
+        rating: 4.7,
+        stock: 20,
+        image: '/src/assets/images/product_streamdeck_prism_1791358626915.jpg',
+        description: 'Keypad taktil 15 tombol LCD grafis untuk shortcut animasi ekspresi VTuber, soundboard instan, scene switcher OBS, dan integrasi cloud Discord.',
         specs: [
-          { label: 'Layout', value: '75% Compact (82 Keys)' },
-          { label: 'Switch', value: 'Linear Gateron Pro Yellow Hot-swap' },
-          { label: 'Konektivitas', value: 'Tri-Mode: 2.4GHz, BT 5.0, USB-C' },
-          { label: 'RGB Lighting', value: '16.8 Juta Warna Per-key' }
+          { label: 'Tombol', value: '15 Kunci LCD Full-Color Kustom' },
+          { label: 'Integrasi Software', value: 'OBS, Twitch, Discord, Spotify' },
+          { label: 'Stand Penyangga', value: 'Sudut Ergonomis Magnetik 45°' },
+          { label: 'Konektor', value: 'Kabel Kepang USB-C Detachable' }
         ]
       },
       {
         id: 5,
-        name: 'UltraView 4K IPS Monitor 27"',
-        category: 'Electronics',
-        price: 4250000,
-        rating: 4.8,
-        stock: 11,
-        image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80',
-        description: 'Monitor profesional 27 inci 4K UHD dengan kalibrasi pabrik Delta E < 2, cakupan warna 99% sRGB, dan single-cable USB-C Power Delivery 65W.',
+        name: 'SakuraCloud Gasket Mechanical Keyboard',
+        category: 'Anime Peripherals',
+        price: 950000,
+        rating: 4.9,
+        stock: 25,
+        image: '/src/assets/images/product_sakuracloud_keyboard_1791358690210.jpg',
+        description: 'Mechanical keyboard 75% compact dengan gasket silicone mount, keycaps PBT dye-sublimation bertema Sakura Cloud anime, dan switch linear pre-lubed yang lembut.',
         specs: [
-          { label: 'Resolusi', value: '3840 x 2160 (4K UHD) @ 60Hz' },
-          { label: 'Panel', value: 'IPS Anti-Glare 350 nits' },
-          { label: 'Port', value: 'USB-C (65W), HDMI 2.0, DP 1.4' },
-          { label: 'Ergonomi', value: 'Pivot, Tilt, Swivel, Height-Adjustable' }
+          { label: 'Layout', value: '75% Compact (82 Keys + Metal Knob)' },
+          { label: 'Switch', value: 'Custom Gateron Pink Linear Pre-Lubed' },
+          { label: 'Mounting Style', value: 'Silicone Gasket + Poron Foam' },
+          { label: 'Konektivitas', value: 'Tri-Mode: 2.4GHz, BT 5.0, USB-C' }
         ]
       },
       {
         id: 6,
-        name: 'CloudBuds Pro TWS Earbuds',
-        category: 'Accessories',
-        price: 680000,
-        rating: 4.6,
-        stock: 40,
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80',
-        description: 'True Wireless Stereo earbuds berbobot ringan dengan mikrofon ENC peredam suara angin dan sertifikasi tahan keringat IPX5.',
+        name: 'HexaGlow Modular RGB Wall Panels',
+        category: 'Rig & Studio',
+        price: 1250000,
+        rating: 4.8,
+        stock: 18,
+        image: '/src/assets/images/product_hexaglow_rgb_panels_1791358699929.jpg',
+        description: 'Panel dinding heksagonal 9 modul cerdas dengan kontrol aplikasi cloud, reaksi real-time terhadap stream donation alerts, dan sinkronisasi waveform musik.',
         specs: [
-          { label: 'Driver', value: '10mm Dynamic Bass Boost' },
-          { label: 'Ketahanan', value: 'IPX5 Water Resistant' },
-          { label: 'Baterai', value: 'Total 28 Jam dengan Casing' },
-          { label: 'Latency', value: 'Ultra-low 45ms Gaming Mode' }
+          { label: 'Isi Paket', value: '9 Panel Hexagonal + Modul Kontrol' },
+          { label: 'Konektivitas', value: 'Wi-Fi 2.4GHz Cloud Synced' },
+          { label: 'Warna', value: '16 Juta Warna RGBIC Dinamis' },
+          { label: 'Fitur Integrasi', value: 'Twitch/YouTube Stream Alerts Sync' }
         ]
       },
       {
         id: 7,
-        name: 'CloudMinimalist Canvas Backpack',
-        category: 'Fashion',
-        price: 480000,
-        rating: 4.7,
-        stock: 28,
-        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80',
-        description: 'Ransel urban berbahan kanvas tahan air dengan kompartemen empuk khusus laptop hingga 16 inci, saku tersembunyi anti-maling, dan port charger USB terintegrasi.',
+        name: 'Dual-Channel XLR Audio Interface Cloud',
+        category: 'Streaming Audio',
+        price: 3200000,
+        rating: 4.9,
+        stock: 12,
+        image: '/src/assets/images/hero_aetheria_streamer_setup_1791358611801.jpg',
+        description: 'Audio mixer antarmuka studio profesional dengan hardware DSP equalizer, kompresor vokal analog, dan preamp mikrofon +48V phantom power ultra-hening.',
         specs: [
-          { label: 'Bahan', value: 'Water-Repellent 900D Oxford Canvas' },
-          { label: 'Kapasitas', value: '22 Liter' },
-          { label: 'Laptop Sleeve', value: 'Muat Laptop hingga 16.2 Inci' },
-          { label: 'Fitur', value: 'Luggage Strap & Anti-theft Back Pocket' }
+          { label: 'Input Channels', value: '2 Combo XLR / 6.35mm Line' },
+          { label: 'Preamp Gain', value: 'Hingga +65dB Ultra Low-Noise' },
+          { label: 'Hardware DSP', value: 'Reverb, EQ, Noise Gate, Compressor' },
+          { label: 'Output', value: 'Headphone Amp + Dual Stereo TRS' }
         ]
       },
       {
         id: 8,
-        name: 'Nordic Ceramic Desk Organizer',
-        category: 'Home & Living',
-        price: 320000,
-        rating: 4.8,
-        stock: 18,
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80',
-        description: 'Set wadah meja keramik estetik bergaya Skandinavia untuk menyimpan peralatan kerja, alat tulis, dan gawai kerja dengan rapi dan minimalis.',
+        name: 'Chibi Hologram Stream Companion HoloDeck',
+        category: 'Anime Peripherals',
+        price: 850000,
+        rating: 4.9,
+        stock: 30,
+        image: '/src/assets/images/product_chibi_stream_holodeck_1791358710371.jpg',
+        description: 'Display akrilik transparan mini holographic 2026 menampilkan animasi avatar chibi VTuber reaktif yang tersinkronasi langsung dengan live chat dan donasi stream.',
         specs: [
-          { label: 'Material', value: 'Keramik Matte Hand-Finished' },
-          { label: 'Isi Paket', value: '3 Wadah Multi-Ukuran + Tatakan Kayu Oak' },
-          { label: 'Dimensi', value: '28cm x 12cm x 9cm' },
-          { label: 'Finishing', value: 'Anti-Scratch Base Padding' }
+          { label: 'Display Engine', value: 'Transparent Micro-OLED Holographic HUD' },
+          { label: 'Mascot Presets', value: '12 Pre-Rigged Chibi Expressions' },
+          { label: 'Koneksi Cloud', value: 'WebSockets Live Chat Ingest' },
+          { label: 'Daya', value: 'USB-C 5V Low Power Consumption' }
         ]
       }
     ];
@@ -611,6 +641,43 @@
         });
       }
 
+      // Scroll Pop-up Animation via IntersectionObserver
+      if ('IntersectionObserver' in window) {
+        const popupObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.scroll-popup').forEach(el => {
+          popupObserver.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.scroll-popup').forEach(el => {
+          el.classList.add('is-visible');
+        });
+      }
+
+      // Floating Back to Top Button Logic
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+          } else {
+            backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+          }
+        });
+      }
+
       // Initial Render
       applyFilterAndSearch();
     });
@@ -622,7 +689,7 @@
       const buttons = document.querySelectorAll('.category-btn');
       buttons.forEach(btn => {
         if (btn.getAttribute('data-category') === category) {
-          btn.className = 'category-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-xs';
+          btn.className = 'category-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-xs';
         } else {
           btn.className = 'category-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors';
         }
@@ -650,7 +717,7 @@
         });
       }
 
-      // 3. Sort
+      // 3. Sort items
       filtered.sort((a, b) => {
         if (sortValue === 'price-asc') return a.price - b.price;
         if (sortValue === 'price-desc') return b.price - a.price;
@@ -680,7 +747,7 @@
       let html = '';
       items.forEach(product => {
         html += `
-          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:border-purple-300 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
             <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
               <img 
                 src="${product.image}" 
@@ -702,7 +769,7 @@
                   <span>Stok: ${product.stock} unit</span>
                   <span class="text-emerald-600 font-semibold">Tersedia</span>
                 </div>
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-blue-600 transition-colors line-clamp-1">
+                <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-purple-600 transition-colors line-clamp-1">
                   ${product.name}
                 </h3>
                 <p class="text-xs text-slate-500 mt-1 line-clamp-2">
@@ -712,27 +779,28 @@
 
               <div class="mt-4 pt-3 border-t border-slate-100">
                 <div class="flex items-center justify-between mb-3">
-                  <span class="text-[10px] uppercase font-bold text-slate-400">Harga Satuan</span>
-                  <span class="text-base font-extrabold text-blue-600">Rp ${product.price.toLocaleString('id-ID')}</span>
+                  <span class="text-xs text-slate-400">Harga:</span>
+                  <span class="text-base font-extrabold text-slate-900">
+                    Rp ${product.price.toLocaleString('id-ID')}
+                  </span>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-2">
                   <button 
                     onclick="openProductModal(${product.id})" 
-                    class="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center space-x-1"
+                    class="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors text-center"
                   >
-                    <i class="fa-solid fa-eye text-slate-500"></i>
-                    <span>View Details</span>
+                    <i class="fa-solid fa-circle-info mr-1"></i> Spesifikasi
                   </button>
                   <a 
                     href="fitur-sistem.html" 
-                    class="w-full py-2 px-3 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors flex items-center justify-center space-x-1"
+                    class="w-full py-2 px-3 rounded-xl text-xs font-semibold text-white bg-purple-600 hover:bg-purple-700 transition-colors text-center flex items-center justify-center"
                   >
-                    <i class="fa-solid fa-plus text-[10px]"></i>
-                    <span>Beli</span>
+                    <i class="fa-solid fa-cart-plus mr-1"></i> Beli
                   </a>
                 </div>
               </div>
+
             </div>
           </div>
         `;
@@ -741,25 +809,18 @@
       grid.innerHTML = html;
     }
 
-    function resetFilters() {
-      document.getElementById('searchInput').value = '';
-      setCategory('All');
-    }
-
-    function openProductModal(productId) {
-      const product = productsData.find(p => p.id === productId);
+    function openProductModal(id) {
+      const product = productsData.find(p => p.id === id);
       if (!product) return;
 
       document.getElementById('modalProductName').textContent = product.name;
-      document.getElementById('modalProductImage').src = product.image;
-      document.getElementById('modalProductImage').alt = product.name;
-      document.getElementById('modalProductCategory').textContent = product.category;
+      document.getElementById('modalCategoryBadge').textContent = product.category;
       document.getElementById('modalProductPrice').textContent = 'Rp ' + product.price.toLocaleString('id-ID');
       document.getElementById('modalProductDescription').textContent = product.description;
+      document.getElementById('modalProductImage').src = product.image;
       document.getElementById('modalRatingNumber').textContent = product.rating;
-      document.getElementById('modalStockCount').textContent = `Stok: ${product.stock} unit (Siap Kirim)`;
 
-      // Render star icons
+      // Render stars
       let starHtml = '';
       const fullStars = Math.floor(product.rating);
       for (let i = 0; i < fullStars; i++) {
@@ -775,7 +836,7 @@
       if (product.specs && product.specs.length > 0) {
         product.specs.forEach(spec => {
           specsHtml += `
-            <tr class="hover:bg-slate-100/50">
+            <tr class="hover:bg-purple-50/30">
               <td class="py-2.5 px-4 font-semibold text-slate-700 w-1/3">${spec.label}</td>
               <td class="py-2.5 px-4 text-slate-600">${spec.value}</td>
             </tr>
@@ -790,6 +851,13 @@
 
     function closeProductModal() {
       document.getElementById('productDetailModal').classList.add('hidden');
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   </script>
 </body>
